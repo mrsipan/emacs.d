@@ -847,3 +847,5 @@
       (append '(("\\.ml[ily]?$" . tuareg-mode)
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-theme")
