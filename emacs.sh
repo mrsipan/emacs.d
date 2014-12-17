@@ -28,13 +28,15 @@ get_pkgname() {
 use_branch_or_tag() {
   local projname=$1
   local use=$2
+  local here=`pwd`
 
   printf "using tag/branch $use in project $projname\n"
 
   cd $projname
   git pull
   git checkout $2
-  cd ..
+  git branch -v
+  cd $here
   update_git $projname
 }
 
@@ -128,6 +130,7 @@ giturls=(
   git://github.com/cofi/evil-leader.git
   git://github.com/cofi/evil-numbers.git
   git@github.com:mrsipan/python.el.git
+  git@github.com:mrsipan/emacs-rust.git
   git://github.com/mooz/js2-mode.git
   git://github.com/ananthakumaran/monky.git
   git://github.com/hvesalai/scala-mode2.git
@@ -185,8 +188,11 @@ git checkout emacs-24
 git branch
 cd ..
 
+# pep8
+git clone https://gist.github.com/302847.git python-pep8
+
 use_branch_or_tag python.el emacs-24
-use_branch_or_tag magit 1.1.2
+use_branch_or_tag magit 1.2.2
 use_branch_or_tag evil 1.0.9
 use_branch_or_tag cider v0.6.0
 use_branch_or_tag clojure-mode 2.1.1

@@ -1,7 +1,7 @@
-;; -*- lexical-binding: t -*-
+;x; -*- lexical-binding: t -*-
 (add-to-list 'load-path "~/.emacs.d/evil")
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
-(add-to-list 'load-path "~/.emacs.d/color-theme")
+;(add-to-list 'load-path "~/.emacs.d/color-theme")
 (add-to-list 'load-path "~/.emacs.d/dictionary")
 (add-to-list 'load-path "~/.emacs.d/text-translator")
 (add-to-list 'load-path "~/.emacs.d/python.el")
@@ -12,7 +12,8 @@
 (add-to-list 'load-path "~/.emacs.d/evil-numbers")
 (add-to-list 'load-path "~/.emacs.d/ace-jump-mode")
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/python-dev")
+;(add-to-list 'load-path "~/.emacs.d/python-dev")
+(add-to-list 'load-path "~/.emacs.d/python-pep8")
 (add-to-list 'load-path "~/.emacs.d/pytest-emacs")
 (add-to-list 'load-path "~/.emacs.d/pylookup")
 (add-to-list 'load-path "~/.emacs.d/paredit")
@@ -49,7 +50,7 @@
 (add-to-list 'load-path "~/.emacs.d/ibuffer-vc")
 (add-to-list 'load-path "~/.emacs.d/caml")
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(add-to-list 'load-path "~/.emacs.d/rust-mode")
+(add-to-list 'load-path "~/.emacs.d/emacs-rust")
 (add-to-list 'load-path "~/.emacs.d/ruby-end")
 (add-to-list 'load-path "~/.emacs.d/smex")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
@@ -288,12 +289,12 @@
 (add-to-list 'auto-mode-alist '("\\.genshi$" . nxml-mode))
 
 ;; Wombat theme
-(require 'color-theme)
-(setq color-theme-is-global t)
-(eval-after-load "color-theme"
-                 '(progn
-                    (color-theme-initialize)
-                    (color-theme-sipan)))
+;; (require 'color-theme)
+;; (setq color-theme-is-global t)
+;; (eval-after-load "color-theme"
+;;                  '(progn
+;;                     (color-theme-initialize)
+;;                     (color-theme-sipan)))
 
 ;; Text translation
 (require 'text-translator)
