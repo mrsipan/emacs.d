@@ -243,7 +243,6 @@
 ;(global-set-key [mouse-3] 'dictionary-mouse-popup-matching-words)
 
 ;; Disable splash screen
-(custom-set-variables '(inhibit-startup-screen t))
 (setq initial-scratch-message nil)
 
 ;; Don't add new lines if cursor goes past the end of the file
@@ -258,7 +257,7 @@
     (setq font-name "Droid Sans Mono Slashed-12"))
 
 (if (string-equal "darwin" (symbol-name system-type))
-    (setq font-name "Droid-Sans-Mono-Slashed-15"))
+    (setq font-name "Droid Sans Mono Slashed-15"))
 
 (if (string-equal "windows-nt" (symbol-name system-type))
     (setq font-name "Inconsolata-15"))
@@ -849,3 +848,4 @@
               auto-mode-alist))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-theme")
+(load-theme 'tango t)
