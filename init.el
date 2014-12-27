@@ -51,7 +51,7 @@
 (add-to-list 'load-path "~/.emacs.d/caml")
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (add-to-list 'load-path "~/.emacs.d/emacs-rust")
-(add-to-list 'load-path "~/.emacs.d/ruby-end")
+;(add-to-list 'load-path "~/.emacs.d/ruby-end")
 (add-to-list 'load-path "~/.emacs.d/smex")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/expand-region")
@@ -571,7 +571,7 @@
 (setq ibuffer-use-header-line t)
 
 ;; ruby
-(require 'ruby-end)
+;(require 'ruby-end)
 
 ;; smex
 (setq smex-save-file "~/.emacs.d/tmp/smex-items")

@@ -107,7 +107,7 @@ giturls=(
   git://github.com/emacsmirror/yaml-mode.git
   git://github.com/emacsmirror/ruby-mode.git
   git://github.com/emacsmirror/htmlize.git
-  git://github.com/emacsmirror/ruby-end.git
+  #git://github.com/emacsmirror/ruby-end.git
   git://github.com/emacsmirror/smex.git
   git://github.com/emacsmirror/expand-region.git
   git://github.com/emacsmirror/browse-kill-ring.git
