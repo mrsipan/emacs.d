@@ -848,4 +848,4 @@
               auto-mode-alist))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-theme")
-(load-theme 'tango t)
+(load-theme 'zenburn t)
