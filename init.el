@@ -721,8 +721,8 @@
 ;(setq split-width-threshold nil)
 
 ;; use ZZ to commit in git
-(evil-define-key 'normal magit-log-edit-mode-map
-  (kbd "ZZ") 'magit-log-edit-commit)
+(evil-define-key 'normal git-commit-mode-map
+  (kbd "ZZ") 'git-commit-commit)
 
 ;;winner mode
 ;(define-key global-map (kbd "C-, C-u") 'winner-undo)
@@ -849,3 +849,7 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-theme")
 (load-theme 'zenburn t)
+
+(setq epa-file-name-regexp "\\.\\(gpg\\|asc\\)$"
+      epa-armor t)
+(epa-file-name-regexp-update)
