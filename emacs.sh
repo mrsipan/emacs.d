@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 update_git() {
   local pkgname=$1
@@ -61,7 +61,7 @@ check_availability() {
   return 0
 }
 
-check_availability emacs autoconf make git hg
+check_availability emacs autoconf make git
 
 declare -a giturl
 giturls=(
