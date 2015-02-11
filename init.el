@@ -393,7 +393,8 @@
 (show-paren-mode t)
 
 ;; server
-(server-start)
+(if (not (server-running-p))
+    (server-start))
 
 ;; org mode
 (require 'org)

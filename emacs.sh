@@ -194,5 +194,5 @@ git clone https://gist.github.com/302847.git python-pep8
 use_branch_or_tag python.el emacs-24
 use_branch_or_tag magit 1.2.2
 use_branch_or_tag evil 1.0.9
-use_branch_or_tag cider v0.6.0
-use_branch_or_tag clojure-mode 2.1.1
+use_branch_or_tag cider v0.8.2
+use_branch_or_tag clojure-mode 4.0.1
