@@ -159,6 +159,7 @@ giturls=(
   git://github.com/mrsipan/vala-mode.git
   git://github.com/cask/epl.git
   git://github.com/ocaml/tuareg.git
+  git://github.com/roman/evil-paredit.git
 )
 
 # make directories

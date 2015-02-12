@@ -17,6 +17,7 @@
 (add-to-list 'load-path "~/.emacs.d/pytest-emacs")
 (add-to-list 'load-path "~/.emacs.d/pylookup")
 (add-to-list 'load-path "~/.emacs.d/paredit")
+(add-to-list 'load-path "~/.emacs.d/evil-paredit")
 (add-to-list 'load-path "~/.emacs.d/autopair")
 (add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/evil-org-mode")
@@ -273,7 +274,9 @@
 (add-hook 'clojure-mode-hook
           #'(lambda ()
               (setq autopair-dont-activate t)
+              (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
+              (evil-paredit-mode)
               ;(flyspell-prog-mode)
               (turn-on-paredit)))
 
@@ -377,6 +380,7 @@
 (add-hook 'emacs-lisp-mode-hook
           #'(lambda ()
               (setq autopair-dont-activate t)
+              (evil-paredit-mode)
               (turn-on-paredit)
               ;(flyspell-prog-mode)
               ))
@@ -746,7 +750,6 @@
               ;(turn-on-paredit)
               ))
 
-;(require 'nrepl)
 (require 'cider)
 (add-hook 'cider-mode-hook
           #'(lambda ()
