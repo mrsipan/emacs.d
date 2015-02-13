@@ -70,7 +70,7 @@ giturls=(
   git://github.com/emacsmirror/paredit.git
   git://github.com/emacsmirror/autopair.git
   git://github.com/emacsmirror/undo-tree.git
-  git://github.com/emacsmirror/clojure-mode.git
+  git://github.com/clojure-emacs/clojure-mode.git
   git://github.com/emacsmirror/dictionary.git
   git://github.com/emacsmirror/text-translator.git
   git://github.com/emacsmirror/rainbow-mode.git
@@ -84,7 +84,7 @@ giturls=(
   git://github.com/emacsmirror/haskell-mode.git
   git://github.com/emacsmirror/android-mode.git
   git://github.com/emacsmirror/bookmark-plus.git
-  git://github.com/emacsmirror/tramp.git
+  git://git.savannah.gnu.org/tramp.git
   git://github.com/emacsmirror/cl-lib.git
   git://github.com/emacsmirror/ido.git
   git://github.com/emacsmirror/ido-ubiquitous.git
@@ -159,7 +159,6 @@ giturls=(
   git://github.com/mrsipan/vala-mode.git
   git://github.com/cask/epl.git
   git://github.com/ocaml/tuareg.git
-  git://github.com/roman/evil-paredit.git
 )
 
 # make directories
@@ -197,3 +196,9 @@ use_branch_or_tag magit 1.2.2
 use_branch_or_tag evil 1.0.9
 use_branch_or_tag cider v0.8.2
 use_branch_or_tag clojure-mode 4.0.1
+use_branch_or_tag tramp v-2-2-10
+
+# ugly
+[ -d queue ] || mkdir queue
+[ -f queue/queue.el ] || \
+  wget http://www.dr-qubit.org/predictive/queue.el -P queue

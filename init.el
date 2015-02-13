@@ -67,7 +67,7 @@
 (add-to-list 'load-path "~/.emacs.d/evil-plugins")
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
 (add-to-list 'load-path "~/.emacs.d/scala-mode2")
-; (add-to-list 'load-path "~/.emacs.d/nrepl")
+(add-to-list 'load-path "~/.emacs.d/queue")
 (add-to-list 'load-path "~/.emacs.d/cider")
 (add-to-list 'load-path "~/.emacs.d/evil-nerd-commenter")
 (add-to-list 'load-path "~/.emacs.d/find-file-in-project")
@@ -139,6 +139,8 @@
 (evil-leader/set-key
  "ci" 'evilnc-comment-or-uncomment-lines
  "cc" 'evilnc-comment-or-uncomment-to-the-line)
+
+(require 'evil-paredit)
 
 ;(define-key evil-normal-state-map (kbd ",w") 'evil-write)
 (evil-leader/set-key "w" 'evil-write)
@@ -278,6 +280,7 @@
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
               (evil-paredit-mode)
               ;(flyspell-prog-mode)
+              (clojure-enable-cider)
               (turn-on-paredit)))
 
 ;; javascript
@@ -397,6 +400,7 @@
 (show-paren-mode t)
 
 ;; server
+(require 'server)
 (if (not (server-running-p))
     (server-start))
 
@@ -514,10 +518,12 @@
 
 ;; tramp. pep8 doesn't work correctly without this line
 (require `tramp)
+(setq tramp-debug-buffer 1)
 (setq tramp-persistency-file-name "~/.emacs.d/tmp/tramp")
+;(setq tramp-default-user "mrsipan")
 (setq tramp-default-method "ssh")
-;; (add-to-list 'tramp-default-proxies-alist
-;;              '(nil "\\`root\\'" "/ssh:%h:"))
+; (add-to-list 'tramp-default-proxies-alist
+;             '(nil "\\`root\\'" "/ssh:%h:"))
 ;; (add-to-list 'tramp-default-proxies-alist
 ;;              '((regexp-quote (system-name)) nil nil))
 
