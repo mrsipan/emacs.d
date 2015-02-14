@@ -522,10 +522,10 @@
 (setq tramp-persistency-file-name "~/.emacs.d/tmp/tramp")
 ;(setq tramp-default-user "mrsipan")
 (setq tramp-default-method "ssh")
-; (add-to-list 'tramp-default-proxies-alist
-;             '(nil "\\`root\\'" "/ssh:%h:"))
-;; (add-to-list 'tramp-default-proxies-alist
-;;              '((regexp-quote (system-name)) nil nil))
+(add-to-list 'tramp-default-proxies-alist
+             '(nil "\\`root\\'" "/ssh:%h:"))
+(add-to-list 'tramp-default-proxies-alist
+             '((regexp-quote (system-name)) nil nil))
 
 (require 'dictem)
 
