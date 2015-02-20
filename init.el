@@ -1,4 +1,4 @@
-;x; -*- lexical-binding: t -*-
+;; -*- lexical-binding: t -*-
 (add-to-list 'load-path "~/.emacs.d/evil")
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
 ;(add-to-list 'load-path "~/.emacs.d/color-theme")
