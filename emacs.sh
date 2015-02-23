@@ -197,6 +197,7 @@ use_branch_or_tag evil 1.0.9
 use_branch_or_tag cider v0.8.2
 use_branch_or_tag clojure-mode 4.0.1
 use_branch_or_tag tramp v-2-2-10
+use_branch_or_tag org-mode release_8.2.10
 
 # ugly
 [ -d queue ] || mkdir queue
