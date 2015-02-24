@@ -212,9 +212,11 @@
 (require 'rst)
 
 (setq auto-mode-alist
-      (append '(("\\.txt$" . rst-mode)
-                ("\\.test$" . rst-mode)
-                ("\\.re?st$" . rst-mode)) auto-mode-alist))
+      (append
+       '(("\\.txt$" . rst-mode)
+         ("\\.test$" . rst-mode)
+         ("\\.re?st$" . rst-mode))
+       auto-mode-alist))
 
 ; Turn on font-lock in all modes that support it
 (global-font-lock-mode t)
@@ -406,7 +408,13 @@
 
 ;; org mode
 (require 'org)
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(setq auto-mode-alist
+      (append
+       '(("\\.org$" . org-mode)
+         ("\\.org\\.asc$" . org-mode)
+         ("\\.org\\.gpg$" . org-mode))
+       auto-mode-alist))
+
 (setq org-directory "~/Dropbox/notes")
 (setq org-default-notes-file (concat org-directory "notes.org"))
 (setq org-agenda-files (quote ("~/Dropbox/notes")))
