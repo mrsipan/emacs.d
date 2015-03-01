@@ -67,7 +67,6 @@ declare -a giturl
 giturls=(
   git://github.com/emacsmirror/ace-jump-mode.git
   git://github.com/emacsmirror/evil.git
-  git://github.com/emacsmirror/paredit.git
   git://github.com/emacsmirror/autopair.git
   git://github.com/emacsmirror/undo-tree.git
   git://github.com/clojure-emacs/clojure-mode.git
@@ -159,6 +158,8 @@ giturls=(
   git://github.com/mrsipan/vala-mode.git
   git://github.com/cask/epl.git
   git://github.com/ocaml/tuareg.git
+  git://github.com/Fuco1/smartparens.git
+  git://github.com/expez/evil-smartparens.git
 )
 
 # make directories
@@ -198,6 +199,7 @@ use_branch_or_tag cider v0.8.2
 use_branch_or_tag clojure-mode 4.0.1
 use_branch_or_tag tramp v-2-2-10
 use_branch_or_tag org-mode release_8.2.10
+use_branch_or_tag smartparens 1.6.3
 
 # ugly
 [ -d queue ] || mkdir queue

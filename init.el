@@ -12,20 +12,15 @@
 (add-to-list 'load-path "~/.emacs.d/evil-numbers")
 (add-to-list 'load-path "~/.emacs.d/ace-jump-mode")
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
-;(add-to-list 'load-path "~/.emacs.d/python-dev")
 (add-to-list 'load-path "~/.emacs.d/python-pep8")
 (add-to-list 'load-path "~/.emacs.d/pytest-emacs")
 (add-to-list 'load-path "~/.emacs.d/pylookup")
-(add-to-list 'load-path "~/.emacs.d/paredit")
-(add-to-list 'load-path "~/.emacs.d/evil-paredit")
-(add-to-list 'load-path "~/.emacs.d/autopair")
 (add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/evil-org-mode")
 (add-to-list 'load-path "~/.emacs.d/magit")
 (add-to-list 'load-path "~/.emacs.d/cl-lib")
 (add-to-list 'load-path "~/.emacs.d/apel")
 (add-to-list 'load-path "~/.emacs.d/elscreen")
-;(add-to-list 'load-path "~/.emacs.d/dired-plus")
 (add-to-list 'load-path "~/.emacs.d/jinja2")
 (add-to-list 'load-path "~/.emacs.d/babel")
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
@@ -36,13 +31,11 @@
 (add-to-list 'load-path "~/.emacs.d/tramp/lisp")
 (add-to-list 'load-path "~/.emacs.d/ido")
 (add-to-list 'load-path "~/.emacs.d/ido-ubiquitous")
-;(add-to-list 'load-path "~/.emacs.d/vc/vc")
 (add-to-list 'load-path "~/.emacs.d/dictem")
 (add-to-list 'load-path "~/.emacs.d/shell")
 (add-to-list 'load-path "~/.emacs.d/puppet-syntax-emacs")
 (add-to-list 'load-path "~/.emacs.d/auto-pep8")
 (add-to-list 'load-path "~/.emacs.d/cperl-mode")
-;(add-to-list 'load-path "~/.emacs.d/ruby-mode")
 (add-to-list 'load-path "~/.emacs.d/php-mode")
 (add-to-list 'load-path "~/.emacs.d/sass-mode")
 (add-to-list 'load-path "~/.emacs.d/yaml-mode")
@@ -52,7 +45,6 @@
 (add-to-list 'load-path "~/.emacs.d/caml")
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (add-to-list 'load-path "~/.emacs.d/emacs-rust")
-;(add-to-list 'load-path "~/.emacs.d/ruby-end")
 (add-to-list 'load-path "~/.emacs.d/smex")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/expand-region")
@@ -90,13 +82,15 @@
 ;; ocaml mode
 (add-to-list 'load-path "~/.emacs.d/tuareg")
 
+(add-to-list 'load-path "~/.emacs.d/smartparens")
+(add-to-list 'load-path "~/.emacs.d/evil-smartparens")
 
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-;; dired+
-;(require 'dired+)
+(require 'smartparens-config)
+(smartparens-global-mode t)
 
 ;; undo tree
 (require 'undo-tree)
@@ -140,8 +134,6 @@
  "ci" 'evilnc-comment-or-uncomment-lines
  "cc" 'evilnc-comment-or-uncomment-to-the-line)
 
-(require 'evil-paredit)
-
 ;(define-key evil-normal-state-map (kbd ",w") 'evil-write)
 (evil-leader/set-key "w" 'evil-write)
 
@@ -167,9 +159,6 @@
 (define-key evil-motion-state-map (kbd "C-8") 'ido-switch-buffer-other-window)
 (define-key evil-normal-state-map (kbd "C-9") 'ido-find-file-other-window)
 (define-key evil-motion-state-map (kbd "C-9") 'ido-find-file-other-window)
-
-; for autopair to skip the last )'"
-;(define-key evil-insert-state-map (kbd "C-.") 'forward-char)
 
 (evil-ex-define-cmd "[tabe]dit" 'elscreen-create)
 (evil-ex-define-cmd "[tabc]lose" 'elscreen-kill)
@@ -203,10 +192,6 @@
 
 ;; Dark background
 (setq frame-background-mode 'dark)
-
-;; autopair
-(require 'autopair)
-(autopair-global-mode)
 
 ; rst mode.
 (require 'rst)
@@ -255,9 +240,6 @@
 
 ;(set-frame-parameter (selected-frame) 'alpha 90)
 
-;; Use Inconsolata
-; (if (string-equal "gnu/linux" (symbol-name system-type))
-;     (setq font-name "Inconsolata-12"))
 (if (string-equal "gnu/linux" (symbol-name system-type))
     (setq font-name "Droid Sans Mono Slashed-12"))
 
@@ -273,17 +255,12 @@
 ;; Clojure
 (require 'clojure-mode)
 (add-to-list 'auto-mode-alist '("\\.cljs?$" . clojure-mode))
-(require 'paredit)
-(defun turn-on-paredit () (paredit-mode 1))
 (add-hook 'clojure-mode-hook
           #'(lambda ()
-              (setq autopair-dont-activate t)
               (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
-              (evil-paredit-mode)
               ;(flyspell-prog-mode)
-              (clojure-enable-cider)
-              (turn-on-paredit)))
+              (clojure-enable-cider)))
 
 ;; javascript
 (autoload 'js2-mode "js2-mode" nil t)
@@ -330,17 +307,10 @@
 ;; python hooks
 (add-hook 'python-mode-hook
           #'(lambda ()
-              ;(flyspell-prog-mode)
-              ;; not using pytest yet
-              ;(load-library "pytest")
-              ;(auto-pep8-mode 1)
               (define-key python-mode-map "\C-m" 'newline-and-indent)
               ;; set evil-shift-with to the indent size in python
               (setq evil-shift-width 4)
-              (auto-pep8-mode 0)
-              (setq autopair-handle-action-fns
-                    (list #'autopair-default-handle-action
-                          #'autopair-python-triple-quote-action))))
+              (auto-pep8-mode 0)))
 
 ;; always indent when editing js
 (add-hook 'js2-mode-hook
@@ -383,12 +353,7 @@
 ;;(add-hook 'message-mode-hook 'flyspell-mode)
 (add-hook 'rst-mode-hook 'flyspell-mode)
 (add-hook 'emacs-lisp-mode-hook
-          #'(lambda ()
-              (setq autopair-dont-activate t)
-              (evil-paredit-mode)
-              (turn-on-paredit)
-              ;(flyspell-prog-mode)
-              ))
+          #'(lambda ()))
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -589,9 +554,6 @@
 (setq ibuffer-sorting-mode 'recency)
 (setq ibuffer-use-header-line t)
 
-;; ruby
-;(require 'ruby-end)
-
 ;; smex
 (setq smex-save-file "~/.emacs.d/tmp/smex-items")
 (require 'smex)
@@ -758,18 +720,14 @@
 (require 'scala-mode2)
 (add-hook 'scala-mode-hook
           #'(lambda ()
-              ;(setq autopair-dont-activate t)
               (define-key scala-mode-map "\C-m" 'newline-and-indent)
               ;(flyspell-prog-mode)
-              ;(turn-on-paredit)
               ))
 
 (require 'cider)
 (add-hook 'cider-mode-hook
           #'(lambda ()
-              (rainbow-delimiters-mode)
-              (setq autopair-dont-activate t)
-              (turn-on-paredit)))
+              (rainbow-delimiters-mode)))
 
 ;; taken from http://whattheemacsd.com/
 (defun delete-current-buffer-file ()
