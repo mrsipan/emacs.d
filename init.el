@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t -*-
 (add-to-list 'load-path "~/.emacs.d/evil")
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
-;(add-to-list 'load-path "~/.emacs.d/color-theme")
 (add-to-list 'load-path "~/.emacs.d/dictionary")
 (add-to-list 'load-path "~/.emacs.d/text-translator")
 (add-to-list 'load-path "~/.emacs.d/python.el")
@@ -163,8 +162,8 @@
 (evil-ex-define-cmd "[tabe]dit" 'elscreen-create)
 (evil-ex-define-cmd "[tabc]lose" 'elscreen-kill)
 
-;(require 'evil-surround)
-;(global-evil-surround-mode 1)
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 ;; Ace jump
 (require 'ace-jump-mode)
@@ -271,14 +270,6 @@
 
 ;; xml
 (add-to-list 'auto-mode-alist '("\\.genshi$" . nxml-mode))
-
-;; Wombat theme
-;; (require 'color-theme)
-;; (setq color-theme-is-global t)
-;; (eval-after-load "color-theme"
-;;                  '(progn
-;;                     (color-theme-initialize)
-;;                     (color-theme-sipan)))
 
 ;; Text translation
 (require 'text-translator)
@@ -493,7 +484,7 @@
 (require `tramp)
 (setq tramp-debug-buffer 1)
 (setq tramp-persistency-file-name "~/.emacs.d/tmp/tramp")
-;(setq tramp-default-user "mrsipan")
+;(setq tramp-default-user "")
 (setq tramp-default-method "ssh")
 (add-to-list 'tramp-default-proxies-alist
              '(nil "\\`root\\'" "/ssh:%h:"))
@@ -560,7 +551,6 @@
 (smex-initialize)
 
 ;; remove old buffers
-
 (require 'midnight)
 
 ;; seve sessions
@@ -628,23 +618,6 @@
 ;; ;(define-key ac-menu-map "\C-n" 'ac-next)
 ;; ;(define-key ac-menu-map "\C-p" 'ac-previous)
 ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/dict")
-
-;; ;; pymacs stuff
-;; (autoload 'pymacs-apply "pymacs")
-;; (autoload 'pymacs-call "pymacs")
-;; (autoload 'pymacs-eval "pymacs" nil t)
-;; (autoload 'pymacs-exec "pymacs" nil t)
-;; (autoload 'pymacs-load "pymacs" nil t)
-
-;; (require 'pymacs)
-;; (pymacs-load "ropemacs" "rope-")
-;; (setq ropemacs-enable-autoimport t)
-
-
-;; (ac-ropemacs-initialize)
-;; (add-hook 'python-mode-hook
-;;           (lambda ()
-;;             (add-to-list 'ac-sources 'ac-source-ropemacs)))
 
 ;; sh-mode indentation
 (add-hook 'sh-mode-hook
@@ -743,7 +716,7 @@
         (kill-buffer buffer)
         (message "File '%s' successfully removed" filename)))))
 
-(global-set-key (kbd "C-, C-k") 'delete-current-buffer-file)
+;(global-set-key (kbd "C-, C-k") 'delete-current-buffer-file)
 
 (require 'find-file-in-project)
 
@@ -823,8 +796,8 @@
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-theme")
-(load-theme 'zenburn t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/sipan-theme")
+(load-theme 'sipan t)
 
 (setq epa-file-name-regexp "\\.\\(gpg\\|asc\\)$"
       epa-armor t)
