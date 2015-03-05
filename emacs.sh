@@ -174,14 +174,6 @@ for giturl in "${giturls[@]}"; do
   download "$giturl"
 done
 
-# colors
-ln -s zenburn-theme/zenburn-theme.el themes/
-ln -s colors/sipan-theme.el themes/
-ln -s colors/ceviche-theme.el themes/
-
-ln -s $HOME/.emacs.d/colors/color-theme-sipan.el $HOME/.emacs.d/color-theme/themes
-ln -s $HOME/.emacs.d/colors/color-theme-ceviche.el $HOME/.emacs.d/color-theme/themes
-
 ## one-offs
 # python
 cd python.el
@@ -189,9 +181,6 @@ git pull
 git checkout emacs-24
 git branch
 cd ..
-
-# pep8
-git clone https://gist.github.com/302847.git python-pep8
 
 use_branch_or_tag python.el emacs-24
 use_branch_or_tag magit 1.2.2
