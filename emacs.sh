@@ -156,6 +156,7 @@ giturls=(
   git://github.com/lunaryorn/pkg-info.el.git
   git://github.com/magnars/s.el.git
   git://github.com/mrsipan/vala-mode.git
+  git://github.com/mrsipan/sipan-theme.git
   git://github.com/cask/epl.git
   git://github.com/ocaml/tuareg.git
   git://github.com/Fuco1/smartparens.git
