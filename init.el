@@ -244,7 +244,7 @@
     (setq font-name "Droid Sans Mono Slashed-12"))
 
 (if (string-equal "darwin" (symbol-name system-type))
-    (setq font-name "Droid Sans Mono Slashed-15"))
+    (setq font-name "Droid Sans Mono Slashed-13"))
 
 (if (string-equal "windows-nt" (symbol-name system-type))
     (setq font-name "Inconsolata-15"))
