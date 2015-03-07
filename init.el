@@ -88,8 +88,10 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+(require 'evil-smartparens)
 (require 'smartparens-config)
 (smartparens-global-mode t)
+(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
 ;; undo tree
 (require 'undo-tree)
@@ -260,6 +262,7 @@
               (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
               ;(flyspell-prog-mode)
+              (smartparens-strict-mode)
               (clojure-enable-cider)))
 
 ;; javascript
