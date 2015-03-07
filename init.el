@@ -305,7 +305,10 @@
               (define-key python-mode-map "\C-m" 'newline-and-indent)
               ;; set evil-shift-with to the indent size in python
               (setq evil-shift-width 4)
+              (setq python-check-command "flake8")
               (auto-pep8-mode 0)))
+
+(evil-leader/set-key "pc" 'python-check)
 
 ;; always indent when editing js
 (add-hook 'js2-mode-hook
