@@ -256,7 +256,7 @@
 
 ;; Clojure
 (require 'clojure-mode)
-(add-to-list 'auto-mode-alist '("\\.cljs?$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.clj[sx]?$" . clojure-mode))
 (add-hook 'clojure-mode-hook
           #'(lambda ()
               (rainbow-delimiters-mode)
@@ -348,7 +348,11 @@
 ;;(add-hook 'message-mode-hook 'flyspell-mode)
 (add-hook 'rst-mode-hook 'flyspell-mode)
 (add-hook 'emacs-lisp-mode-hook
-          #'(lambda ()))
+          #'(lambda ()
+              (rainbow-delimiters-mode)
+              (rainbow-mode)
+              (turn-on-eldoc)
+              (smartparens-strict-mode)))
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -749,10 +753,12 @@
 
 ;; deft
 (require 'deft)
-(setq deft-extension "txt")
+(setq deft-extension "org")
 (setq deft-directory "~/Dropbox/deft")
-(setq deft-text-mode "rst-mode")
+(setq deft-text-mode 'org-mode)
+;(setq deft-use-filename-as-title t)
 (global-set-key [f7] 'deft)
+
 
 ;; use hunspell
 ;(setq ispell-program-name "hunspell")
