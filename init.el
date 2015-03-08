@@ -88,10 +88,11 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-(require 'evil-smartparens)
 (require 'smartparens-config)
 (smartparens-global-mode t)
-(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+(unless (version< emacs-version "24.4")
+  (require 'evil-smartparens)
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
 
 ;; undo tree
 (require 'undo-tree)
