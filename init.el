@@ -133,9 +133,7 @@
 (evil-mode 1)
 
 (require 'evil-nerd-commenter)
-(evil-leader/set-key
- "ci" 'evilnc-comment-or-uncomment-lines
- "cc" 'evilnc-comment-or-uncomment-to-the-line)
+(evilnc-default-hotkeys)
 
 (evil-leader/set-key "w" 'evil-write)
 

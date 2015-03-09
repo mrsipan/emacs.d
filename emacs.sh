@@ -190,6 +190,7 @@ use_branch_or_tag clojure-mode 4.0.1
 use_branch_or_tag tramp v-2-2-10
 use_branch_or_tag org-mode release_8.2.10
 use_branch_or_tag smartparens 1.6.3
+use_branch_or_tag evil-nerd-commenter 1.5.2
 
 # ugly
 [ -d queue ] || mkdir queue
