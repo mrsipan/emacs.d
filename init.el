@@ -137,7 +137,6 @@
  "ci" 'evilnc-comment-or-uncomment-lines
  "cc" 'evilnc-comment-or-uncomment-to-the-line)
 
-;(define-key evil-normal-state-map (kbd ",w") 'evil-write)
 (evil-leader/set-key "w" 'evil-write)
 
 (define-key evil-normal-state-map (kbd "Y") (kbd "y$"))
@@ -488,6 +487,7 @@
 
 (define-key global-map (kbd "C-, b") 'ido-switch-buffer)
 (evil-leader/set-key "b" 'ido-switch-buffer)
+(evil-leader/set-key "R" (lambda () (interactive) (evil-edit nil t)))
 
 (define-key global-map (kbd "C-, C-b") 'buffer-menu)
 
@@ -816,3 +816,6 @@
 (setq epa-file-name-regexp "\\.\\(gpg\\|asc\\)$"
       epa-armor t)
 (epa-file-name-regexp-update)
+
+(if (boundp 'aquamacs-version)
+    (setq aquamacs-scratch-file "~/tmp/aquamacs_scratch"))
