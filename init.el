@@ -55,7 +55,6 @@
 (add-to-list 'load-path "~/.emacs.d/wgrep")
 (add-to-list 'load-path "~/.emacs.d/lilypond")
 (add-to-list 'load-path "~/.emacs.d/gist")
-(add-to-list 'load-path "~/.emacs.d/evil-plugins")
 (add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
 (add-to-list 'load-path "~/.emacs.d/scala-mode2")
 (add-to-list 'load-path "~/.emacs.d/queue")
@@ -93,9 +92,6 @@
 (global-undo-tree-mode)
 
 (require 'evil-numbers)
-
-;; (require 'evil-operator-comment)
-;; (global-evil-operator-comment-mode 1)
 
 ; use evil, I love vim
 (setq evil-find-skip-newlines t)
@@ -138,7 +134,7 @@
   ;;"\\" 'evilnc-comment-operator)
 
 (require 'smartparens-config)
-(smartparens-global-mode t)
+;(smartparens-global-mode t)
 
 (unless (version< emacs-version "24.4")
   (require 'evil-smartparens)
@@ -703,9 +699,6 @@
 
 (define-key evil-motion-state-map (kbd "C-w u") 'winner-undo)
 (define-key evil-motion-state-map (kbd "C-w U") 'winner-redo)
-
-(require 'evil-operator-comment)
-(global-evil-operator-comment-mode 1)
 
 (require 'rainbow-delimiters)
 
