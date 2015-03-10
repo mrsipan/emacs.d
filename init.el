@@ -88,12 +88,6 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-(require 'smartparens-config)
-(smartparens-global-mode t)
-(unless (version< emacs-version "24.4")
-  (require 'evil-smartparens)
-  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
-
 ;; undo tree
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -136,12 +130,19 @@
 (evil-leader/set-key
   "ci" 'evilnc-comment-or-uncomment-lines
   "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
-  "cc" 'evilnc-copy-and-comment-lines
+  "cy" 'evilnc-copy-and-comment-lines
   "cp" 'evilnc-comment-or-uncomment-paragraphs
   "cr" 'comment-or-uncomment-region
   "cv" 'evilnc-toggle-invert-comment-line-by-line
   "cc" 'evilnc-comment-operator)
   ;;"\\" 'evilnc-comment-operator)
+
+(require 'smartparens-config)
+(smartparens-global-mode t)
+
+(unless (version< emacs-version "24.4")
+  (require 'evil-smartparens)
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
 
 (evil-leader/set-key "w" 'evil-write)
 
