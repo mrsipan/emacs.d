@@ -83,6 +83,9 @@
 (add-to-list 'load-path "~/.emacs.d/smartparens")
 (add-to-list 'load-path "~/.emacs.d/evil-smartparens")
 
+;; journal
+(add-to-list 'load-path "~/.emacs.d/org-journal")
+
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -819,3 +822,11 @@
 
 (if (boundp 'aquamacs-version)
     (setq aquamacs-scratch-file "~/tmp/aquamacs_scratch"))
+
+(require 'org-crypt)
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+(setq org-crypt-key nil)
+
+(setq org-journal-dir "~/Dropbox/journal/")
+(require 'org-journal)

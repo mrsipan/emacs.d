@@ -161,6 +161,7 @@ giturls=(
   git://github.com/ocaml/tuareg.git
   git://github.com/Fuco1/smartparens.git
   git://github.com/expez/evil-smartparens.git
+  git://github.com/bastibe/org-journal.git
 )
 
 # make directories
