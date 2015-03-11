@@ -815,16 +815,22 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/sipan-theme")
 (load-theme 'sipan t)
 
-(setq epa-file-name-regexp "\\.\\(gpg\\|asc\\)$"
-      epa-armor t)
-(epa-file-name-regexp-update)
-
 (if (boundp 'aquamacs-version)
     (setq aquamacs-scratch-file "~/tmp/aquamacs_scratch"))
 
+(setq epa-file-cache-passphrase-for-symmetric-encryption t)
+;(setq epa-file-encrypt-to "")
+(setq epa-file-select-keys t)
+(setq epa-file-name-regexp "\\.\\(gpg\\|asc\\)$" epa-armor t)
+(setq epa-file-inhibit-auto-save t)
+(require 'epa-file)
+(epa-file-enable)
+(epa-file-name-regexp-update)
+
 (require 'org-crypt)
 (org-crypt-use-before-save-magic)
-(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+(setq org-tags-exclude-from-inheritance '("crypt"))
+;(setq org-crypt-key "")
 (setq org-crypt-key nil)
 
 (setq org-journal-dir "~/Dropbox/journal/")
