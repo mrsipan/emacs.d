@@ -176,7 +176,6 @@
 
 ;; Ace jump
 (require 'ace-jump-mode)
-;(define-key evil-normal-state-map (kbd ",j") 'ace-jump-mode)
 (evil-leader/set-key "j" 'ace-jump-mode)
 
 ;; Set size for paragraphs
@@ -405,13 +404,13 @@
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE"))))
 
 (setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "red" :weight bold)
-              ("NEXT" :foreground "blue" :weight bold)
-              ("DONE" :foreground "forest green" :weight bold)
-              ("WAITING" :foreground "orange" :weight bold)
-              ("HOLD" :foreground "magenta" :weight bold)
-              ("CANCELLED" :foreground "forest green" :weight bold)
-              ("PHONE" :foreground "forest green" :weight bold))))
+      (quote (("TODO" :foreground "#ff5996" :weight bold)
+              ("NEXT" :foreground "#53a0ec" :weight bold)
+              ("DONE" :foreground "#cae682" :weight bold)
+              ("WAITING" :foreground "#f4a3a3" :weight bold)
+              ("HOLD" :foreground "#a7a7d1" :weight bold)
+              ("CANCELLED" :foreground "#cae682" :weight bold)
+              ("PHONE" :foreground "#ffffba" :weight bold))))
 
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/Dropbox/notes/refile.org")
@@ -478,7 +477,7 @@
 (load "elscreen" "ElScreen" t)
 
 ;; Remap unconfortable c-x to c-/
-(define-key global-map [(control ?,)] ctl-x-map)
+;(define-key global-map [(control ?,)] ctl-x-map)
 (define-key global-map (kbd "C-, C-,") 'smex)
 ;; in console mode
 (define-key global-map (kbd "C-x x") 'smex)
