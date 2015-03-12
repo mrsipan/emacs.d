@@ -79,7 +79,7 @@ giturls=(
   git://github.com/emacsmirror/dired-plus.git
   git://github.com/emacsmirror/babel.git
   git://github.com/emacsmirror/apel.git
-  git://github.com/emacsmirror/elscreen.git
+  git://github.com/knu/elscreen.git
   git://github.com/emacsmirror/haskell-mode.git
   git://github.com/emacsmirror/android-mode.git
   git://github.com/emacsmirror/bookmark-plus.git
