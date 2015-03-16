@@ -19,7 +19,7 @@
 (add-to-list 'load-path "~/.emacs.d/magit")
 (add-to-list 'load-path "~/.emacs.d/cl-lib")
 (add-to-list 'load-path "~/.emacs.d/apel")
-(add-to-list 'load-path "~/.emacs.d/elscreen")
+;; (add-to-list 'load-path "~/.emacs.d/elscreen")
 (add-to-list 'load-path "~/.emacs.d/jinja2")
 (add-to-list 'load-path "~/.emacs.d/babel")
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
@@ -153,10 +153,10 @@
 ;(define-key evil-normal-state-map (kbd ",l") 'pylookup-lookup)
 ;(define-key evil-normal-state-map (kbd ",g") 'show-file-name)
 (evil-leader/set-key "g" 'show-full-path)
-;; tabs with elscreen
-(define-key evil-motion-state-map (kbd "gt") 'elscreen-next)
-(define-key evil-motion-state-map (kbd "gT") 'elscreen-previous)
-(define-key evil-motion-state-map (kbd "C-`") 'elscreen-toggle)
+;; ;; tabs with elscreen
+;; (define-key evil-motion-state-map (kbd "gt") 'elscreen-next)
+;; (define-key evil-motion-state-map (kbd "gT") 'elscreen-previous)
+;; (define-key evil-motion-state-map (kbd "C-`") 'elscreen-toggle)
 
 ;; open buffers and files
 (define-key evil-normal-state-map (kbd "C-*") 'ido-switch-buffer)
@@ -168,8 +168,8 @@
 (define-key evil-normal-state-map (kbd "C-9") 'ido-find-file-other-window)
 (define-key evil-motion-state-map (kbd "C-9") 'ido-find-file-other-window)
 
-(evil-ex-define-cmd "[tabe]dit" 'elscreen-create)
-(evil-ex-define-cmd "[tabc]lose" 'elscreen-kill)
+;; (evil-ex-define-cmd "[tabe]dit" 'elscreen-create)
+;; (evil-ex-define-cmd "[tabc]lose" 'elscreen-kill)
 
 (require 'evil-surround)
 (global-evil-surround-mode 1)
@@ -473,8 +473,8 @@
 (define-key minibuffer-local-must-match-map [escape] 'abort-recursive-edit)
 (define-key minibuffer-local-isearch-map [escape] 'abort-recursive-edit)
 
-; ElScreen
-(load "elscreen" "ElScreen" t)
+;; ; ElScreen
+;; (load "elscreen" "ElScreen" t)
 
 ;; Remap unconfortable c-x to c-/
 ;(define-key global-map [(control ?,)] ctl-x-map)
@@ -660,7 +660,12 @@
 (evil-set-initial-state 'magit-diff-mode 'motion)
 (add-hook 'magit-status-mode-hook
           (lambda ()
+            (evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
             (evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)))
+
+(add-hook 'magit-branch-manager-mode-hook
+          (lambda ()
+            (evil-define-key 'motion magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)))
 
 (require 'magit)
 
@@ -692,8 +697,7 @@
 ;(setq split-width-threshold nil)
 
 ;; use ZZ to commit in git
-(evil-define-key 'normal git-commit-mode-map
-  (kbd "ZZ") 'git-commit-commit)
+(evil-define-key 'normal git-commit-mode-map (kbd "ZZ") 'git-commit-commit)
 
 ;;winner mode
 ;(define-key global-map (kbd "C-, C-u") 'winner-undo)
@@ -765,11 +769,9 @@
 ;(setq deft-use-filename-as-title t)
 (global-set-key [f7] 'deft)
 
-
-;; use hunspell
-;(setq ispell-program-name "hunspell")
-; (eval-after-load "ispell"
-;  '(progn (defun ispell-get-coding-system () 'utf-8)))
+;; ;; use hunspell
+;; (unless (boundp 'aquamacs-version)
+;;     (setq ispell-program-name "hunspell"))
 
 ;; full screen magit-status
 (defadvice magit-status (around magit-fullscreen activate)
@@ -835,3 +837,7 @@
 
 (setq org-journal-dir "~/Dropbox/journal/")
 (require 'org-journal)
+
+; dired
+(evil-define-key 'normal dired-mode-map (kbd "n") 'evil-search-next)
+(evil-define-key 'normal dired-mode-map (kbd "N") 'evil-search-next)
