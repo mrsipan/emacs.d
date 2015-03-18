@@ -86,6 +86,9 @@
 ;; journal
 (add-to-list 'load-path "~/.emacs.d/org-journal")
 
+;; company-mode
+(add-to-list 'load-path "~/.emacs.d/company-mode")
+
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -359,7 +362,7 @@
           #'(lambda ()
               (rainbow-delimiters-mode)
               (rainbow-mode)
-              (turn-on-eldoc)
+              (turn-on-eldoc-mode)
               (smartparens-strict-mode)))
 
 ;; Highlight current line
@@ -476,9 +479,9 @@
 ;; ; ElScreen
 ;; (load "elscreen" "ElScreen" t)
 
-;; Remap unconfortable c-x to c-/
-;(define-key global-map [(control ?,)] ctl-x-map)
 (define-key global-map (kbd "C-, C-,") 'smex)
+(evil-leader/set-key "," 'smex)
+(global-set-key (kbd "M-x") 'smex)
 ;; in console mode
 (define-key global-map (kbd "C-x x") 'smex)
 (define-key global-map (kbd "C-x c") 'keyboard-quit)
@@ -497,7 +500,7 @@
 (define-key global-map (kbd "C-, C-b") 'buffer-menu)
 
 
-;; tramp. pep8 doesn't work correctly without this line
+;; tramp.
 (require `tramp)
 (setq tramp-debug-buffer 1)
 (setq tramp-persistency-file-name "~/.emacs.d/tmp/tramp")
@@ -616,25 +619,25 @@
 (defalias 'eshell/ff 'find-file)
 (defalias 'eshell/ffow 'find-file-other-window)
 
-;; ;;  auto-complete
-;; (require 'auto-complete-config)
-;; (ac-config-default)
-;; (ac-flyspell-workaround)
+; ;;  auto-complete
+; (require 'auto-complete-config)
+; (ac-config-default)
+; (ac-flyspell-workaround)
 
-;; (global-auto-complete-mode t)
-;; (setq ac-auto-show-menu 0.8)
+; (global-auto-complete-mode t)
+; (setq ac-auto-show-menu 0.8)
 
-;; (set-default 'ac-sources
-;;  '(ac-source-dictionary
-;;    ac-source-words-in-buffer
-;;    ac-source-words-in-same-mode-buffers
-;;    ac-source-words-in-all-buffer))
+; (set-default 'ac-sources
+;  '(ac-source-dictionary
+;    ac-source-words-in-buffer
+;    ac-source-words-in-same-mode-buffers
+;    ac-source-words-in-all-buffer))
 
-;; (setq ac-use-menu-map t)
-;; (setq ac-comphist-file "~/.emacs.d/tmp/ac-comphist")
-;; ;(define-key ac-menu-map "\C-n" 'ac-next)
-;; ;(define-key ac-menu-map "\C-p" 'ac-previous)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/dict")
+; (setq ac-use-menu-map t)
+; (setq ac-comphist-file "~/.emacs.d/tmp/ac-comphist")
+; ;(define-key ac-menu-map "\C-n" 'ac-next)
+; ;(define-key ac-menu-map "\C-p" 'ac-previous)
+;(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/dict")
 
 ;; sh-mode indentation
 (add-hook 'sh-mode-hook
@@ -658,6 +661,8 @@
 ;; magit
 (evil-set-initial-state 'magit-status-mode 'motion)
 (evil-set-initial-state 'magit-diff-mode 'motion)
+(evil-set-initial-state 'git-commit-mode 'insert)
+
 (add-hook 'magit-status-mode-hook
           (lambda ()
             (evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
@@ -673,16 +678,16 @@
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
-;; taken from http://whattheemacsd.com/setup-ido.el-01.html
-;; Fix ido-ubiquitous for newer packages
-(defmacro ido-ubiquitous-use-new-completing-read (cmd package)
-  `(eval-after-load ,package
-     '(defadvice ,cmd (around ido-ubiquitous-new activate)
-        (let ((ido-ubiquitous-enable-compatibility nil))
-          ad-do-it))))
-(ido-ubiquitous-use-new-completing-read webjump 'webjump)
-(ido-ubiquitous-use-new-completing-read yas/expand 'yasnippet)
-(ido-ubiquitous-use-new-completing-read yas/visit-snippet-file 'yasnippet)
+;; ;; taken from http://whattheemacsd.com/setup-ido.el-01.html
+;; ;; Fix ido-ubiquitous for newer packages
+;; (defmacro ido-ubiquitous-use-new-completing-read (cmd package)
+;;   `(eval-after-load ,package
+;;      '(defadvice ,cmd (around ido-ubiquitous-new activate)
+;;         (let ((ido-ubiquitous-enable-compatibility nil))
+;;           ad-do-it))))
+;; (ido-ubiquitous-use-new-completing-read webjump 'webjump)
+;; (ido-ubiquitous-use-new-completing-read yas/expand 'yasnippet)
+;; (ido-ubiquitous-use-new-completing-read yas/visit-snippet-file 'yasnippet)
 
 ;; rebinding
 ;(global-set-key "\M-?" 'help)
@@ -719,22 +724,6 @@
 (add-hook 'cider-mode-hook
           #'(lambda ()
               (rainbow-delimiters-mode)))
-
-;; taken from http://whattheemacsd.com/
-(defun delete-current-buffer-file ()
-  "Removes file connected to current buffer and kills buffer."
-  (interactive)
-  (let ((filename (buffer-file-name))
-        (buffer (current-buffer))
-        (name (buffer-name)))
-    (if (not (and filename (file-exists-p filename)))
-        (ido-kill-buffer)
-      (when (yes-or-no-p "Are you sure you want to remove this file? ")
-        (delete-file filename)
-        (kill-buffer buffer)
-        (message "File '%s' successfully removed" filename)))))
-
-;(global-set-key (kbd "C-, C-k") 'delete-current-buffer-file)
 
 (require 'find-file-in-project)
 
@@ -773,19 +762,20 @@
 ;; (unless (boundp 'aquamacs-version)
 ;;     (setq ispell-program-name "hunspell"))
 
-;; full screen magit-status
-(defadvice magit-status (around magit-fullscreen activate)
-  (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
-  (delete-other-windows))
+;; ;; full screen magit-status
+;; (defadvice magit-status (around magit-fullscreen activate)
+;;   (window-configuration-to-register :magit-fullscreen)
+;;   ad-do-it
+;;   (delete-other-windows))
 
-(defun magit-quit-session ()
-  "Restores the previous window configuration and kills the magit buffer"
-  (interactive)
-  (kill-buffer)
-  (jump-to-register :magit-fullscreen))
+;; (defun magit-quit-session ()
+;;   "Restores the previous window configuration and kills the magit buffer"
+;;   (interactive)
+;;   (kill-buffer)
+;;   (jump-to-register :magit-fullscreen))
 
-(define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+;; (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+(setq magit-status-buffer-switch-function 'switch-to-buffer)
 
 ; enable github gist
 (require 'gist)
@@ -840,4 +830,8 @@
 
 ; dired
 (evil-define-key 'normal dired-mode-map (kbd "n") 'evil-search-next)
-(evil-define-key 'normal dired-mode-map (kbd "N") 'evil-search-next)
+(evil-define-key 'normal dired-mode-map (kbd "N") 'evil-search-previous)
+(evil-define-key 'normal dired-mode-map (kbd "Q") 'kill-this-buffer)
+
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)

@@ -162,6 +162,7 @@ giturls=(
   git://github.com/Fuco1/smartparens.git
   git://github.com/expez/evil-smartparens.git
   git://github.com/bastibe/org-journal.git
+  git://github.com/company-mode/company-mode.git
 )
 
 # make directories
