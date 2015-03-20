@@ -11,7 +11,6 @@
 (add-to-list 'load-path "~/.emacs.d/evil-numbers")
 (add-to-list 'load-path "~/.emacs.d/ace-jump-mode")
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/python-pep8")
 (add-to-list 'load-path "~/.emacs.d/pytest-emacs")
 (add-to-list 'load-path "~/.emacs.d/pylookup")
 (add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
@@ -33,7 +32,6 @@
 (add-to-list 'load-path "~/.emacs.d/dictem")
 (add-to-list 'load-path "~/.emacs.d/shell")
 (add-to-list 'load-path "~/.emacs.d/puppet-syntax-emacs")
-(add-to-list 'load-path "~/.emacs.d/auto-pep8")
 (add-to-list 'load-path "~/.emacs.d/cperl-mode")
 (add-to-list 'load-path "~/.emacs.d/php-mode")
 (add-to-list 'load-path "~/.emacs.d/sass-mode")
@@ -313,8 +311,7 @@
               (define-key python-mode-map "\C-m" 'newline-and-indent)
               ;; set evil-shift-with to the indent size in python
               (setq evil-shift-width 4)
-              (setq python-check-command "flake8")
-              (auto-pep8-mode 0)))
+              (setq python-check-command "flake8")))
 
 (evil-leader/set-key "pc" 'python-check)
 
@@ -439,10 +436,6 @@
 (require 'yasnippet)
 (yas/global-mode 1)
 (setq yas/prompt-functions '(yas/ido-prompt yas/dropdown-prompt))
-
-;; pep8
-(require 'python-pep8)
-(require 'auto-pep8)
 
 ;; pylookup
 (setq pylookup-program "~/.emacs.d/pylookup/pylookup.py")
@@ -619,26 +612,6 @@
 (defalias 'eshell/ff 'find-file)
 (defalias 'eshell/ffow 'find-file-other-window)
 
-; ;;  auto-complete
-; (require 'auto-complete-config)
-; (ac-config-default)
-; (ac-flyspell-workaround)
-
-; (global-auto-complete-mode t)
-; (setq ac-auto-show-menu 0.8)
-
-; (set-default 'ac-sources
-;  '(ac-source-dictionary
-;    ac-source-words-in-buffer
-;    ac-source-words-in-same-mode-buffers
-;    ac-source-words-in-all-buffer))
-
-; (setq ac-use-menu-map t)
-; (setq ac-comphist-file "~/.emacs.d/tmp/ac-comphist")
-; ;(define-key ac-menu-map "\C-n" 'ac-next)
-; ;(define-key ac-menu-map "\C-p" 'ac-previous)
-;(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/dict")
-
 ;; sh-mode indentation
 (add-hook 'sh-mode-hook
           (lambda ()
@@ -678,17 +651,6 @@
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
-;; ;; taken from http://whattheemacsd.com/setup-ido.el-01.html
-;; ;; Fix ido-ubiquitous for newer packages
-;; (defmacro ido-ubiquitous-use-new-completing-read (cmd package)
-;;   `(eval-after-load ,package
-;;      '(defadvice ,cmd (around ido-ubiquitous-new activate)
-;;         (let ((ido-ubiquitous-enable-compatibility nil))
-;;           ad-do-it))))
-;; (ido-ubiquitous-use-new-completing-read webjump 'webjump)
-;; (ido-ubiquitous-use-new-completing-read yas/expand 'yasnippet)
-;; (ido-ubiquitous-use-new-completing-read yas/visit-snippet-file 'yasnippet)
-
 ;; rebinding
 ;(global-set-key "\M-?" 'help)
 ;(global-set-key "\C-h" 'delete-backward-char)
@@ -697,9 +659,6 @@
 (if (display-graphic-p)
   (progn
     (set-scroll-bar-mode 'right)))
-
-;; split windows horizontally
-;(setq split-width-threshold nil)
 
 ;; use ZZ to commit in git
 (evil-define-key 'normal git-commit-mode-map (kbd "ZZ") 'git-commit-commit)
@@ -762,19 +721,6 @@
 ;; (unless (boundp 'aquamacs-version)
 ;;     (setq ispell-program-name "hunspell"))
 
-;; ;; full screen magit-status
-;; (defadvice magit-status (around magit-fullscreen activate)
-;;   (window-configuration-to-register :magit-fullscreen)
-;;   ad-do-it
-;;   (delete-other-windows))
-
-;; (defun magit-quit-session ()
-;;   "Restores the previous window configuration and kills the magit buffer"
-;;   (interactive)
-;;   (kill-buffer)
-;;   (jump-to-register :magit-fullscreen))
-
-;; (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
 
 ; enable github gist
