@@ -135,7 +135,6 @@ giturls=(
   git://github.com/hvesalai/scala-mode2.git
   git://github.com/puppetlabs/puppet-syntax-emacs.git
   git://orgmode.org/org-mode.git
-  git://github.com/auto-complete/auto-complete.git
   git://github.com/redguardtoo/evil-nerd-commenter.git
   git://github.com/emacsmirror/zenburn-theme.git
   git://github.com/jwiegley/regex-tool.git

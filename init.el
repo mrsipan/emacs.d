@@ -43,7 +43,6 @@
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (add-to-list 'load-path "~/.emacs.d/emacs-rust")
 (add-to-list 'load-path "~/.emacs.d/smex")
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/expand-region")
 (add-to-list 'load-path "~/.emacs.d/browse-kill-ring")
 (add-to-list 'load-path "~/.emacs.d/Pymacs")
@@ -786,10 +785,12 @@
                                    (interactive)
                                    (progn
                                      (split-window-horizontally)
-                                     (evil-window-right 1))))
+                                     (evil-window-right 1)
+                                     (evil-scroll-line-to-center nil))))
 
 (define-key evil-window-map "s" '(lambda ()
                                    (interactive)
                                    (progn
                                      (split-window-vertically)
-                                     (evil-window-down 1))))
+                                     (evil-window-down 1)
+                                     (evil-scroll-line-to-center nil))))
