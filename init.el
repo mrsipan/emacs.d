@@ -16,9 +16,7 @@
 (add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/evil-org-mode")
 (add-to-list 'load-path "~/.emacs.d/magit")
-(add-to-list 'load-path "~/.emacs.d/cl-lib")
 (add-to-list 'load-path "~/.emacs.d/apel")
-;; (add-to-list 'load-path "~/.emacs.d/elscreen")
 (add-to-list 'load-path "~/.emacs.d/jinja2")
 (add-to-list 'load-path "~/.emacs.d/babel")
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
@@ -273,7 +271,6 @@
 ;; javascript
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
 ;; json is supported by js-mode
 (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 
@@ -761,7 +758,6 @@
 (setq epa-file-name-regexp "\\.\\(gpg\\|asc\\)$" epa-armor t)
 (setq epa-file-inhibit-auto-save t)
 (require 'epa-file)
-(epa-file-enable)
 (epa-file-name-regexp-update)
 
 (require 'org-crypt)
@@ -781,6 +777,7 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; split window and go to new one
 (define-key evil-window-map "v" '(lambda ()
                                    (interactive)
                                    (progn
