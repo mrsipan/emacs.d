@@ -704,9 +704,9 @@
 ;; use ZZ to commit in git
 (evil-define-key 'normal git-commit-mode-map (kbd "ZZ") 'git-commit-commit)
 
-;;winner mode
-;(define-key global-map (kbd "C-, C-u") 'winner-undo)
-;(define-key global-map (kbd "C-, C-j") 'winner-redo)
+;; winner mode
+(define-key global-map (kbd "C-, C-u") 'winner-undo)
+(define-key global-map (kbd "C-, C-j") 'winner-redo)
 
 (define-key evil-motion-state-map (kbd "C-w u") 'winner-undo)
 (define-key evil-motion-state-map (kbd "C-w U") 'winner-redo)
@@ -835,3 +835,15 @@
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+
+(define-key evil-window-map "v" '(lambda ()
+                                   (interactive)
+                                   (progn
+                                     (split-window-horizontally)
+                                     (evil-window-right 1))))
+
+(define-key evil-window-map "s" '(lambda ()
+                                   (interactive)
+                                   (progn
+                                     (split-window-vertically)
+                                     (evil-window-down 1))))
