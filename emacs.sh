@@ -128,8 +128,6 @@ giturls=(
   git://github.com/timcharper/evil-surround.git
   git://github.com/cofi/evil-leader.git
   git://github.com/cofi/evil-numbers.git
-  git@github.com:mrsipan/python.el.git
-  git@github.com:mrsipan/emacs-rust.git
   git://github.com/mooz/js2-mode.git
   git://github.com/ananthakumaran/monky.git
   git://github.com/hvesalai/scala-mode2.git
@@ -154,8 +152,10 @@ giturls=(
   git://github.com/magit/git-modes.git
   git://github.com/lunaryorn/pkg-info.el.git
   git://github.com/magnars/s.el.git
-  git://github.com/mrsipan/vala-mode.git
-  git://github.com/mrsipan/sipan-theme.git
+  git@github.com:mrsipan/vala-mode.git
+  git@github.com:mrsipan/sipan-theme.git
+  git@github.com:mrsipan/python.el.git
+  git@github.com:mrsipan/emacs-rust.git
   git://github.com/cask/epl.git
   git://github.com/ocaml/tuareg.git
   git://github.com/Fuco1/smartparens.git
