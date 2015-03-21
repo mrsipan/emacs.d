@@ -529,6 +529,10 @@
           (lambda ()
             (setq show-trailing-whitespace nil)))
 
+(add-hook 'buffer-menu-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace nil)))
+
 ;; use ZZ to check-in
 (evil-define-key 'normal vc-log-mode-map (kbd "ZZ") 'log-edit-done)
 
