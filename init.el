@@ -607,8 +607,9 @@
 ;; expand selection
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C--") 'er/contract-region)
 
-;; aliases
+;; eshell aliases
 (defalias 'eshell/ff 'find-file)
 (defalias 'eshell/ffow 'find-file-other-window)
 
