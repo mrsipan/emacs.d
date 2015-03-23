@@ -84,6 +84,8 @@
 ;; company-mode
 (add-to-list 'load-path "~/.emacs.d/company-mode")
 
+;; ido vertical
+(add-to-list 'load-path "~/.emacs.d/ido-vertical-mode.el")
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -317,6 +319,7 @@
               (define-key js2-mode-map "\C-m" 'newline-and-indent)))
 
 ;; ido stuff
+(require 'ido-vertical-mode)
 (require 'ido)
 (setq ido-enable-flex-matching t)
 (setq ido-create-new-buffer 'always)
@@ -327,8 +330,10 @@
 (setq ido-use-filename-at-point nil)
 (setq ido-use-virtual-buffers t)
 (setq ido-save-directory-list-files "~/.emacs.d/ido-last")
+(setq ido-vertical-show-count t)
 (ido-mode t)
 (ido-everywhere 1)
+(ido-vertical-mode 1)
 
 (add-hook 'ido-setup-hook
           '(lambda ()
@@ -530,6 +535,11 @@
             (setq show-trailing-whitespace nil)))
 
 (add-hook 'buffer-menu-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace nil)))
+
+;; this may not be the right way
+(add-hook 'minibuffer-setup-hook
           (lambda ()
             (setq show-trailing-whitespace nil)))
 
@@ -784,7 +794,7 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (define-key company-active-map (kbd "C-n") (lambda () (interactive) (company-complete-common-or-cycle 1)))
 (define-key company-active-map (kbd "C-p") (lambda () (interactive) (company-complete-common-or-cycle -1)))
-
+(define-key company-active-map (kbd "C-[") 'company-abort)
 
 ;; split window and go to new one
 (define-key evil-window-map "v" '(lambda ()
@@ -802,3 +812,7 @@
                                      (evil-scroll-line-to-center nil))))
 ;; reload files
 (global-auto-revert-mode 1)
+
+;; load custom file
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
