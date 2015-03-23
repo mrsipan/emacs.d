@@ -779,8 +779,12 @@
 (evil-define-key 'normal dired-mode-map (kbd "N") 'evil-search-previous)
 (evil-define-key 'normal dired-mode-map (kbd "Q") 'kill-this-buffer)
 
+(define-key evil-insert-state-map (kbd "C-x C-o") 'company-complete)
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+(define-key company-active-map (kbd "C-n") (lambda () (interactive) (company-complete-common-or-cycle 1)))
+(define-key company-active-map (kbd "C-p") (lambda () (interactive) (company-complete-common-or-cycle -1)))
+
 
 ;; split window and go to new one
 (define-key evil-window-map "v" '(lambda ()
@@ -796,3 +800,5 @@
                                      (split-window-vertically)
                                      (evil-window-down 1)
                                      (evil-scroll-line-to-center nil))))
+;; reload files
+(global-auto-revert-mode 1)
