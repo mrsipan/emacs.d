@@ -335,9 +335,9 @@
 (ido-everywhere 1)
 (ido-vertical-mode 1)
 
-(add-hook 'ido-setup-hook
-          '(lambda ()
-          (define-key ido-completion-map " " 'ido-next-match)))
+;; (add-hook 'ido-setup-hook
+;;           '(lambda ()
+;;           (define-key ido-completion-map " " 'ido-next-match)))
 
 (add-to-list 'ido-work-directory-list-ignore-regexps tramp-file-name-regexp)
 
