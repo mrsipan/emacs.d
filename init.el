@@ -66,7 +66,7 @@
 (add-to-list 'load-path "~/.emacs.d/s.el")
 (add-to-list 'load-path "~/.emacs.d/vala-mode")
 (add-to-list 'load-path "~/.emacs.d/epl")
-
+(add-to-list 'load-path "~/.emacs.d/json-mode")
 ;; gist dependencies
 (add-to-list 'load-path "~/.emacs.d/gh.el")
 (add-to-list 'load-path "~/.emacs.d/pcache")
@@ -274,7 +274,9 @@
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 ;; json is supported by js-mode
-(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(autoload 'json-mode "json-mode" nil t)
+;;(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
 ;; xml
 (add-to-list 'auto-mode-alist '("\\.genshi$" . nxml-mode))
@@ -552,10 +554,9 @@
 
 ;; make buffer names unique
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'forward
-      uniquify-separator "•"
-      uniquify-after-kill-buffer-p t
-      uniquify-ignore-buffers-re "^\\*")
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
 
 (setq rust-indent-unit 4)
 (require 'rust-mode)
@@ -816,3 +817,7 @@
 ;; load custom file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
+
+;; evil in buffer select mode
+(evil-define-key 'normal bs-mode-map (kbd "RET") 'bs-select)
+(evil-define-key 'normal bs-mode-map (kbd "q") 'bs-abort)

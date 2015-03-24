@@ -163,6 +163,7 @@ giturls=(
   git://github.com/bastibe/org-journal.git
   git://github.com/company-mode/company-mode.git
   git@github.com:gempesaw/ido-vertical-mode.el.git
+  git@github.com:joshwnj/json-mode.git
 )
 
 # make directories
