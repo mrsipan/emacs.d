@@ -235,7 +235,7 @@
 (load "dictionary-init")
 ; key bindings for dictionary mode
 (global-set-key "\C-cs" 'dictionary-search)
-(global-set-key "\C-cm" 'dictionary-match-words)
+(global-set-key "\C-cw" 'dictionary-match-words)
 (global-set-key "\M-]" 'dictionary-lookup-definition)
 ;(global-set-key [mouse-3] 'dictionary-mouse-popup-matching-words)
 
@@ -658,6 +658,7 @@
             (evil-define-key 'motion magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)))
 
 (require 'magit)
+(global-set-key (kbd "C-c m") 'magit-status)
 
 ;; ido everywhere
 (require 'ido-ubiquitous)
