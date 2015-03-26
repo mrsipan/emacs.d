@@ -27,6 +27,7 @@
 (add-to-list 'load-path "~/.emacs.d/tramp/lisp")
 (add-to-list 'load-path "~/.emacs.d/ido")
 (add-to-list 'load-path "~/.emacs.d/ido-ubiquitous")
+(add-to-list 'load-path "~/.emacs.d/flx")
 (add-to-list 'load-path "~/.emacs.d/dictem")
 (add-to-list 'load-path "~/.emacs.d/shell")
 (add-to-list 'load-path "~/.emacs.d/puppet-syntax-emacs")
@@ -324,6 +325,9 @@
 ;; ido stuff
 (require 'ido-vertical-mode)
 (require 'ido)
+(require 'ido-ubiquitous)
+(require 'flx-ido)
+
 (setq ido-enable-flex-matching t)
 (setq ido-create-new-buffer 'always)
 (setq ido-enable-tramp-completion nil)
@@ -335,8 +339,11 @@
 (setq ido-save-directory-list-files "~/.emacs.d/ido-last")
 (setq ido-vertical-show-count t)
 (ido-mode t)
+(ido-ubiquitous-mode 1)
 (ido-everywhere 1)
 (ido-vertical-mode 1)
+(flx-ido-mode 1)
+(setq ido-use-faces nil)
 
 ;; (add-hook 'ido-setup-hook
 ;;           '(lambda ()
@@ -661,9 +668,7 @@
 (require 'magit)
 (global-set-key (kbd "C-c m") 'magit-status)
 
-;; ido everywhere
-(require 'ido-ubiquitous)
-(ido-ubiquitous-mode 1)
+
 
 ;; rebinding
 ;(global-set-key "\M-?" 'help)
