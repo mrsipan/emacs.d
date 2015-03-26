@@ -149,16 +149,21 @@
 
 (define-key evil-normal-state-map (kbd "Y") (kbd "y$"))
 
+;; reload
+(define-key evil-normal-state-map (kbd "gr")
+  (lambda () (interactive) (evil-edit nil t)))
+
 (define-key evil-motion-state-map (kbd "SPC") 'evil-scroll-down)
 (define-key evil-normal-state-map (kbd "DEL") 'evil-scroll-up)
 (define-key evil-motion-state-map (kbd "C-6") 'evil-buffer)
 ;(define-key evil-normal-state-map (kbd ",l") 'pylookup-lookup)
 ;(define-key evil-normal-state-map (kbd ",g") 'show-file-name)
-(evil-leader/set-key "g" 'show-full-path)
+(evil-leader/set-key "sp" 'show-full-path)
 ;; ;; tabs with elscreen
 ;; (define-key evil-motion-state-map (kbd "gt") 'elscreen-next)
 ;; (define-key evil-motion-state-map (kbd "gT") 'elscreen-previous)
 ;; (define-key evil-motion-state-map (kbd "C-`") 'elscreen-toggle)
+(evil-leader/set-key "dbf" 'diff-buffer-with-file)
 
 ;; open buffers and files
 (define-key evil-normal-state-map (kbd "C-*") 'ido-switch-buffer)
@@ -370,7 +375,7 @@
           #'(lambda ()
               (rainbow-delimiters-mode)
               (rainbow-mode)
-              (turn-on-eldoc-mode)
+              ;(turn-on-eldoc-mode)
               (smartparens-strict-mode)))
 
 ;; Highlight current line
@@ -499,7 +504,7 @@
 
 (define-key global-map (kbd "C-, b") 'ido-switch-buffer)
 (evil-leader/set-key "b" 'ido-switch-buffer)
-(evil-leader/set-key "R" (lambda () (interactive) (evil-edit nil t)))
+;(evil-leader/set-key "R" (lambda () (interactive) (evil-edit nil t)))
 
 (define-key global-map (kbd "C-, C-b") 'buffer-menu)
 
