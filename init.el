@@ -128,6 +128,7 @@
 ;; like in vim-commentary
 (setq evilnc-hotkey-comment-operator "gc")
 (require 'evil-nerd-commenter)
+(define-key evil-normal-state-map (kbd "gcc") 'evilnc-comment-or-uncomment-lines)
 (evil-leader/set-key
   "ci" 'evilnc-comment-or-uncomment-lines
   "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
