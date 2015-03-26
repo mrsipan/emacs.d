@@ -125,6 +125,8 @@
 (global-evil-leader-mode 1)
 (evil-mode 1)
 
+;; like in vim-commentary
+(setq evilnc-hotkey-comment-operator "gc")
 (require 'evil-nerd-commenter)
 (evil-leader/set-key
   "ci" 'evilnc-comment-or-uncomment-lines
@@ -134,7 +136,6 @@
   "cr" 'comment-or-uncomment-region
   "cv" 'evilnc-toggle-invert-comment-line-by-line
   "cc" 'evilnc-comment-operator)
-  ;;"\\" 'evilnc-comment-operator)
 
 (require 'smartparens-config)
 ;(smartparens-global-mode t)
