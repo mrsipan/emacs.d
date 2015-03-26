@@ -151,7 +151,7 @@
 
 ;; reload
 (define-key evil-normal-state-map (kbd "gr")
-  (lambda () (interactive) (evil-edit nil t)))
+  (lambda () (interactive) (evil-edit nil t) (message "File reloaded")))
 
 (define-key evil-motion-state-map (kbd "SPC") 'evil-scroll-down)
 (define-key evil-normal-state-map (kbd "DEL") 'evil-scroll-up)
