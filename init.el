@@ -140,12 +140,11 @@
   "cv" 'evilnc-toggle-invert-comment-line-by-line
   "cc" 'evilnc-comment-operator)
 
-(require 'smartparens-config)
-;(smartparens-global-mode t)
-
-(unless (version< emacs-version "24.4")
-  (require 'evil-smartparens)
-  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
+;; (unless (version< emacs-version "24.4")
+;;   (require 'evil-smartparens)
+;;   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
+(require 'evil-smartparens)
+(smartparens-global-mode t)
 
 (evil-leader/set-key "w" 'evil-write)
 
@@ -276,6 +275,7 @@
               (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
               ;(flyspell-prog-mode)
+              (evil-smartparens-mode)
               (smartparens-strict-mode)
               (clojure-enable-cider)))
 
@@ -384,6 +384,7 @@
               (rainbow-delimiters-mode)
               (rainbow-mode)
               ;(turn-on-eldoc-mode)
+              (evil-smartparens-mode)
               (smartparens-strict-mode)))
 
 ;; Highlight current line
