@@ -164,6 +164,8 @@ giturls=(
   git://github.com/company-mode/company-mode.git
   git@github.com:gempesaw/ido-vertical-mode.el.git
   git@github.com:joshwnj/json-mode.git
+  git@github.com:Sterlingg/json-snatcher.git
+  git@github.com:gongo/json-reformat.git
   git@github.com:lewang/flx.git
 )
 

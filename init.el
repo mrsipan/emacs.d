@@ -68,6 +68,8 @@
 (add-to-list 'load-path "~/.emacs.d/vala-mode")
 (add-to-list 'load-path "~/.emacs.d/epl")
 (add-to-list 'load-path "~/.emacs.d/json-mode")
+(add-to-list 'load-path "~/.emacs.d/json-reformat")
+(add-to-list 'load-path "~/.emacs.d/json-snatcher")
 ;; gist dependencies
 (add-to-list 'load-path "~/.emacs.d/gh.el")
 (add-to-list 'load-path "~/.emacs.d/pcache")
@@ -280,9 +282,8 @@
 ;; javascript
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-;; json is supported by js-mode
+;; json
 (autoload 'json-mode "json-mode" nil t)
-;;(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
 ;; xml
@@ -325,7 +326,13 @@
 ;; always indent when editing js
 (add-hook 'js2-mode-hook
           #'(lambda ()
+              (setq js2-basic-offset 2)
               (define-key js2-mode-map "\C-m" 'newline-and-indent)))
+
+(add-hook 'json-mode-hook
+          (lambda ()
+            (setq json-reformat:indent-width 2)
+            (setq js-indent-level 2)))
 
 ;; ido stuff
 (require 'ido-vertical-mode)
@@ -725,7 +732,6 @@
 (global-set-key (kbd "C-c T") 'google-translate-query-translate)
 (global-set-key (kbd "C-c r") 'google-translate-at-point-reverse)
 (global-set-key (kbd "C-c R") 'google-translate-query-translate-reverse)
-
 
 ;; googling
 (require 'google-this)
