@@ -332,6 +332,7 @@
 (add-hook 'json-mode-hook
           (lambda ()
             (setq json-reformat:indent-width 2)
+            (setq json-reformat:pretty-string? t)
             (setq js-indent-level 2)))
 
 ;; ido stuff
