@@ -87,8 +87,9 @@
 ;; company-mode
 (add-to-list 'load-path "~/.emacs.d/company-mode")
 
-;; ido vertical
-(add-to-list 'load-path "~/.emacs.d/ido-vertical-mode.el")
+;; evil lisp state
+(add-to-list 'load-path "~/.emacs.d/evil-lisp-state")
+
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -140,11 +141,9 @@
   "cv" 'evilnc-toggle-invert-comment-line-by-line
   "cc" 'evilnc-comment-operator)
 
-;; (unless (version< emacs-version "24.4")
-;;   (require 'evil-smartparens)
-;;   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
-(require 'evil-smartparens)
-(smartparens-global-mode t)
+(unless (version< emacs-version "24.4")
+  (require 'evil-smartparens)
+  (smartparens-global-mode t))
 
 (evil-leader/set-key "w" 'evil-write)
 
@@ -275,8 +274,6 @@
               (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
               ;(flyspell-prog-mode)
-              (evil-smartparens-mode)
-              (smartparens-strict-mode)
               (clojure-enable-cider)))
 
 ;; javascript
@@ -336,7 +333,6 @@
             (setq js-indent-level 2)))
 
 ;; ido stuff
-(require 'ido-vertical-mode)
 (require 'ido)
 (require 'ido-ubiquitous)
 (require 'flx-ido)
@@ -350,17 +346,14 @@
 (setq ido-use-filename-at-point nil)
 (setq ido-use-virtual-buffers t)
 (setq ido-save-directory-list-files "~/.emacs.d/ido-last")
-(setq ido-vertical-show-count t)
 (ido-mode t)
 (ido-ubiquitous-mode 1)
 (ido-everywhere 1)
-(ido-vertical-mode 1)
 (flx-ido-mode 1)
-(setq ido-use-faces nil)
 
-;; (add-hook 'ido-setup-hook
-;;           '(lambda ()
-;;           (define-key ido-completion-map " " 'ido-next-match)))
+(add-hook 'ido-setup-hook
+          '(lambda ()
+          (define-key ido-completion-map " " 'ido-next-match)))
 
 (add-to-list 'ido-work-directory-list-ignore-regexps tramp-file-name-regexp)
 
@@ -382,10 +375,8 @@
 (add-hook 'emacs-lisp-mode-hook
           #'(lambda ()
               (rainbow-delimiters-mode)
-              (rainbow-mode)
               ;(turn-on-eldoc-mode)
-              (evil-smartparens-mode)
-              (smartparens-strict-mode)))
+              (rainbow-mode)))
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -394,7 +385,6 @@
 (setq backup-directory-alist '((".*" . "~/.emacs.d/tmp/backups/")))
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/tmp/auto-saves/\\1" t)))
 (setq tramp-backup-directory-alist backup-directory-alist)
-
 
 (show-paren-mode t)
 
@@ -841,3 +831,6 @@
 ;; evil in buffer select mode
 (evil-define-key 'normal bs-mode-map (kbd "RET") 'bs-select)
 (evil-define-key 'normal bs-mode-map (kbd "q") 'bs-abort)
+
+(setq evil-lisp-state-major-modes '(emacs-lisp-mode clojure-mode))
+(require 'evil-lisp-state)
