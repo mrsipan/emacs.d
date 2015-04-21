@@ -90,6 +90,9 @@
 ;; evil lisp state
 (add-to-list 'load-path "~/.emacs.d/evil-lisp-state")
 
+;; rubocop
+(add-to-list 'load-path "~/.emacs.d/rubocop-emacs")
+
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -834,3 +837,5 @@
 
 (setq evil-lisp-state-major-modes '(emacs-lisp-mode clojure-mode))
 (require 'evil-lisp-state)
+
+(require 'rubocop)
