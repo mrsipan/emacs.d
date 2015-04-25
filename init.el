@@ -839,3 +839,6 @@
 (require 'evil-lisp-state)
 
 (require 'rubocop)
+
+(require 're-builder)
+(setq reb-re-syntax 'string)
