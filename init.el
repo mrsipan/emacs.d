@@ -665,14 +665,9 @@
 (evil-set-initial-state 'magit-diff-mode 'motion)
 (evil-set-initial-state 'git-commit-mode 'insert)
 
-(add-hook 'magit-status-mode-hook
-          (lambda ()
-            (evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
-            (evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)))
-
-(add-hook 'magit-branch-manager-mode-hook
-          (lambda ()
-            (evil-define-key 'motion magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)))
+(evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
+(evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)
+(evil-define-key 'motion magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)
 
 (require 'magit)
 (global-set-key (kbd "C-c m") 'magit-status)
@@ -684,8 +679,10 @@
 ;;   "j" 'magit-goto-next-section
 ;;   "k" 'magit-goto-previous-section)
 (evil-define-key 'motion magit-diff-mode-map
-  "j" 'magit-goto-next-section
-  "k" 'magit-goto-previous-section)
+  (kbd "j") 'magit-goto-next-section
+  (kbd "SPC") 'magit-goto-next-section
+  (kbd "k") 'magit-goto-previous-section
+  (kbd "DEL") 'magit-goto-previous-section)
 
 ;; rebinding
 ;(global-set-key "\M-?" 'help)
@@ -852,3 +849,6 @@
 
 (require 're-builder)
 (setq reb-re-syntax 'string)
+
+;; use q to "close" message
+(evil-define-key 'normal messages-buffer-mode-map (kbd "q") 'evil-buffer)
