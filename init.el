@@ -454,6 +454,8 @@
 (require 'yasnippet)
 (yas/global-mode 1)
 (setq yas/prompt-functions '(yas/ido-prompt yas/dropdown-prompt))
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/snippets")
 
 ;; pylookup
 (setq pylookup-program "~/.emacs.d/pylookup/pylookup.py")
@@ -675,7 +677,15 @@
 (require 'magit)
 (global-set-key (kbd "C-c m") 'magit-status)
 
-
+(evil-define-key 'motion magit-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
+;; (evil-define-key 'motion magit-log-mode-map
+;;   "j" 'magit-goto-next-section
+;;   "k" 'magit-goto-previous-section)
+(evil-define-key 'motion magit-diff-mode-map
+  "j" 'magit-goto-next-section
+  "k" 'magit-goto-previous-section)
 
 ;; rebinding
 ;(global-set-key "\M-?" 'help)
