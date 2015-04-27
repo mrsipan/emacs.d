@@ -356,7 +356,7 @@
 
 (add-hook 'ido-setup-hook
           '(lambda ()
-          (define-key ido-completion-map " " 'ido-next-match)))
+          (define-key ido-completion-map (kbd "SPC") 'ido-next-match)))
 
 (add-to-list 'ido-work-directory-list-ignore-regexps tramp-file-name-regexp)
 
