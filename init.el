@@ -90,7 +90,8 @@
 ;; evil lisp state
 (add-to-list 'load-path "~/.emacs.d/evil-lisp-state")
 
-;; rubocop
+;; ruby
+(add-to-list 'load-path "~/.emacs.d/inf-ruby")
 (add-to-list 'load-path "~/.emacs.d/rubocop-emacs")
 
 (require 'exec-path-from-shell)
@@ -147,6 +148,21 @@
 (unless (version< emacs-version "24.4")
   (require 'evil-smartparens)
   (smartparens-global-mode t))
+
+(setq sp-autoescape-string-quote nil)
+(sp-with-modes sp--lisp-modes
+  ;; disable ', it's the quote character!
+  (sp-local-pair "'" nil :actions nil)
+  ;; also only use the pseudo-quote inside strings where it serve as
+  ;; hyperlink.
+  (sp-local-pair "`" "'" :when '(sp-in-string-p sp-in-comment-p))
+  (sp-local-pair "`" nil
+                 :skip-match (lambda (ms mb me)
+                               (cond
+                                ((equal ms "'")
+                                 (or (sp--org-skip-markup ms mb me)
+                                     (not (sp-point-in-string-or-comment))))
+                                (t (not (sp-point-in-string-or-comment)))))))
 
 (evil-leader/set-key "w" 'evil-write)
 
@@ -452,6 +468,9 @@
 
 ;; yasnippet
 (require 'yasnippet)
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+(define-key yas-minor-mode-map (kbd "C-x C-y") 'yas-expand)
 (yas/global-mode 1)
 (setq yas/prompt-functions '(yas/ido-prompt yas/dropdown-prompt))
 (yas/initialize)
@@ -712,6 +731,7 @@
               ;(flyspell-prog-mode)
               ))
 
+(setq cider-repl-use-clojure-font-lock t)
 (require 'cider)
 (add-hook 'cider-mode-hook
           #'(lambda ()
@@ -850,5 +870,34 @@
 (require 're-builder)
 (setq reb-re-syntax 'string)
 
-;; use q to "close" message
-(evil-define-key 'normal messages-buffer-mode-map (kbd "q") 'evil-buffer)
+;; ;; use q to "close" message
+;; (evil-define-key 'normal messages-buffer-mode-map (kbd "q") 'evil-buffer)
+
+;; show path in frame title
+(setq-default frame-title-format "%f")
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((sh . t)
+   (ruby . t)
+   (scala . t)
+   (js . t)
+   (perl . t)
+   (sqlite . t)
+   (clojure . t)
+   (emacs-lisp . t)
+   (python . t)))
+
+(setq org-edit-src-content-indentation 0
+      org-src-tab-acts-natively t
+      org-src-fontify-natively t
+      org-babel-python-command "~/opt/bin/py"
+      org-confirm-babel-evaluate nil)
+
+;; eshell
+(setq eshell-prefer-lisp-functions t)
+
+;; inf-ruby
+(autoload 'inf-ruby-minor-mode "inf-ruby" "Run inf ruby" t)
+(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)

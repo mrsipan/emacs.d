@@ -168,6 +168,7 @@ giturls=(
   git@github.com:lewang/flx.git
   git@github.com:syl20bnr/evil-lisp-state.git
   git@github.com:bbatsov/rubocop-emacs.git
+  git@github.com:nonsequitur/inf-ruby.git
 )
 
 # make directories
