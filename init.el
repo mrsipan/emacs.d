@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t -*-
 (add-to-list 'load-path "~/.emacs.d/evil")
 (add-to-list 'load-path "~/.emacs.d/clojure-mode")
+(add-to-list 'load-path "~/.emacs.d/inf-clojure")
 (add-to-list 'load-path "~/.emacs.d/dictionary")
 (add-to-list 'load-path "~/.emacs.d/text-translator")
 (add-to-list 'load-path "~/.emacs.d/python.el")
@@ -128,7 +129,7 @@
 (require 'evil-leader)
 (require 'evil)
 (setq evil-leader/in-all-states t)
-(evil-leader/set-leader ",")
+(evil-leader/set-leader "SPC")
 (evil-mode nil)
 (global-evil-leader-mode 1)
 (evil-mode 1)
@@ -172,7 +173,9 @@
 (define-key evil-normal-state-map (kbd "gR")
   (lambda () (interactive) (evil-edit nil t) (message "File reloaded")))
 
-(define-key evil-motion-state-map (kbd "SPC") 'evil-scroll-down)
+;(define-key evil-motion-state-map (kbd "SPC") 'evil-scroll-down)
+(evil-leader/set-key "SPC" 'evil-scroll-down)
+(evil-leader/set-key "DEL" 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "DEL") 'evil-scroll-up)
 (define-key evil-motion-state-map (kbd "C-6") 'evil-buffer)
 ;(define-key evil-normal-state-map (kbd ",l") 'pylookup-lookup)
@@ -292,8 +295,9 @@
           #'(lambda ()
               (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
-              ;(flyspell-prog-mode)
-              (clojure-enable-cider)))
+              ;; (flyspell-prog-mode)
+              ;; (clojure-enable-cider)
+              (inf-clojure-minor-mode)))
 
 ;; javascript
 (autoload 'js2-mode "js2-mode" nil t)
@@ -523,14 +527,14 @@
 ;; (define-key global-map (kbd "C-, C-b") 'buffer-menu-other-window)
 
 (define-key global-map (kbd "C-, f") 'ido-find-file)
-(evil-leader/set-key "f" 'ido-find-file)
+(evil-leader/set-key "ff" 'ido-find-file)
 
 (define-key global-map (kbd "C-, b") 'ido-switch-buffer)
 (evil-leader/set-key "b" 'ido-switch-buffer)
-;(evil-leader/set-key "R" (lambda () (interactive) (evil-edit nil t)))
+(evil-leader/set-key "fR"
+  (lambda () (interactive) (evil-edit nil t) (message "File Reloaded")))
 
 (define-key global-map (kbd "C-, C-b") 'buffer-menu)
-
 
 ;; tramp.
 (require `tramp)
@@ -606,7 +610,7 @@
 (setq ibuffer-use-header-line t)
 
 ;; smex
-(setq smex-save-file "~/.emacs.d/tmp/smex-items")
+(setq smex-save-file "~/.emacs.d/tmp/smex_items")
 (require 'smex)
 (smex-initialize)
 
@@ -699,9 +703,7 @@
 ;;   "k" 'magit-goto-previous-section)
 (evil-define-key 'motion magit-diff-mode-map
   (kbd "j") 'magit-goto-next-section
-  (kbd "SPC") 'magit-goto-next-section
-  (kbd "k") 'magit-goto-previous-section
-  (kbd "DEL") 'magit-goto-previous-section)
+  (kbd "k") 'magit-goto-previous-section)
 
 ;; rebinding
 ;(global-set-key "\M-?" 'help)
@@ -900,4 +902,3 @@
 ;; inf-ruby
 (autoload 'inf-ruby-minor-mode "inf-ruby" "Run inf ruby" t)
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
-(add-hook 'after-init-hook 'inf-ruby-switch-setup)

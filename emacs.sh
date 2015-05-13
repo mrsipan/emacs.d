@@ -70,6 +70,7 @@ giturls=(
   git://github.com/emacsmirror/autopair.git
   git://github.com/emacsmirror/undo-tree.git
   git://github.com/clojure-emacs/clojure-mode.git
+  git://github.com/clojure-emacs/inf-clojure.git
   git://github.com/emacsmirror/dictionary.git
   git://github.com/emacsmirror/text-translator.git
   git://github.com/emacsmirror/rainbow-mode.git
