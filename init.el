@@ -729,9 +729,8 @@
 (require 'scala-mode2)
 (add-hook 'scala-mode-hook
           #'(lambda ()
-              (define-key scala-mode-map "\C-m" 'newline-and-indent)
               ;(flyspell-prog-mode)
-              ))
+              (define-key scala-mode-map "\C-m" 'newline-and-indent)))
 
 (setq cider-repl-use-clojure-font-lock t)
 (require 'cider)
