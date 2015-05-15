@@ -290,14 +290,13 @@
 
 ;; Clojure
 (require 'clojure-mode)
+(require 'clojure-mode-extra-font-locking)
 (add-to-list 'auto-mode-alist '("\\.clj[sx]?$" . clojure-mode))
 (add-hook 'clojure-mode-hook
           #'(lambda ()
               (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
-              ;; (flyspell-prog-mode)
-              ;; (clojure-enable-cider)
-              (inf-clojure-minor-mode)))
+              (clojure-enable-cider)))
 
 ;; javascript
 (autoload 'js2-mode "js2-mode" nil t)
@@ -376,7 +375,8 @@
 
 (add-hook 'ido-setup-hook
           '(lambda ()
-          (define-key ido-completion-map (kbd "SPC") 'ido-next-match)))
+             (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+             (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)))
 
 (add-to-list 'ido-work-directory-list-ignore-regexps tramp-file-name-regexp)
 
