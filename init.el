@@ -690,7 +690,8 @@
 
 (evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
 (evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)
-(evil-define-key 'motion magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)
+(evil-define-key 'normal magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)
+(evil-define-key 'normal magit-branch-manager-mode-map (kbd "q") 'magit-mode-quit-window)
 
 (require 'magit)
 (global-set-key (kbd "C-c m") 'magit-status)
