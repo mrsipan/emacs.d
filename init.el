@@ -103,8 +103,6 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
-(require 'evil-numbers)
-
 ; use evil, I love vim
 (setq evil-find-skip-newlines t)
 (setq evil-move-cursor-back t)
@@ -149,6 +147,10 @@
 (unless (version< emacs-version "24.4")
   (require 'evil-smartparens)
   (smartparens-global-mode t))
+
+(require 'evil-numbers)
+;; (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
+;; (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
 
 (setq sp-autoescape-string-quote nil)
 (sp-with-modes sp--lisp-modes
@@ -503,14 +505,15 @@
 (setf (getenv "EDITOR") "emacsclient"
       (getenv "VISUAL") "emacsclient")
 
-;; use escape to quit minibuffer
-(define-key evil-normal-state-map [escape] 'keyboard-quit)
-(define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'abort-recursive-edit)
-(define-key minibuffer-local-ns-map [escape] 'abort-recursive-edit)
-(define-key minibuffer-local-completion-map [escape] 'abort-recursive-edit)
-(define-key minibuffer-local-must-match-map [escape] 'abort-recursive-edit)
-(define-key minibuffer-local-isearch-map [escape] 'abort-recursive-edit)
+;; use escape to quit minibuffer.
+;(define-key evil-normal-state-map (kbd "<escape>") 'keyboard-quit)
+(define-key evil-visual-state-map (kbd "<escape>") 'keyboard-quit)
+(define-key isearch-mode-map (kbd "<escape>") 'isearch-cancel)
+(define-key minibuffer-local-map (kbd "<escape>") 'keyboard-escape-quit)
+(define-key minibuffer-local-ns-map (kbd "<escape>") 'keyboard-escape-quit)
+(define-key minibuffer-local-completion-map (kbd "<escape>") 'keyboard-escape-quit)
+(define-key minibuffer-local-must-match-map (kbd "<escape>") 'keyboard-escape-quit)
+(define-key minibuffer-local-isearch-map (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; ; ElScreen
 ;; (load "elscreen" "ElScreen" t)
