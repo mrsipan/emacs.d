@@ -445,13 +445,13 @@
               (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE"))))
 
 (setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "#ff5996" :weight bold)
-              ("NEXT" :foreground "#53a0ec" :weight bold)
-              ("DONE" :foreground "#cae682" :weight bold)
-              ("WAITING" :foreground "#f4a3a3" :weight bold)
-              ("HOLD" :foreground "#a7a7d1" :weight bold)
-              ("CANCELLED" :foreground "#cae682" :weight bold)
-              ("PHONE" :foreground "#ffffba" :weight bold))))
+      (quote (("TODO" :foreground "#ff5996" :weight normal)
+              ("NEXT" :foreground "#53a0ec" :weight normal)
+              ("DONE" :foreground "#cae682" :weight normal)
+              ("WAITING" :foreground "#f4a3a3" :weight normal)
+              ("HOLD" :foreground "#a7a7d1" :weight normal)
+              ("CANCELLED" :foreground "#cae682" :weight normal)
+              ("PHONE" :foreground "#ffffba" :weight normal))))
 
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/Dropbox/notes/refile.org")
@@ -696,6 +696,7 @@
 (evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)
 (evil-define-key 'normal magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)
 (evil-define-key 'normal magit-branch-manager-mode-map (kbd "q") 'magit-mode-quit-window)
+(evil-define-key 'normal magit-diff-mode-map (kbd "q") 'magit-mode-quit-window)
 
 (require 'magit)
 (global-set-key (kbd "C-c m") 'magit-status)
