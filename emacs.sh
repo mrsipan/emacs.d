@@ -75,7 +75,6 @@ giturls=(
   git://github.com/emacsmirror/text-translator.git
   git://github.com/emacsmirror/rainbow-mode.git
   git://github.com/emacsmirror/yasnippet.git
-  git://github.com/emacsmirror/magit.git
   git://github.com/emacsmirror/jinja2.git
   git://github.com/emacsmirror/dired-plus.git
   git://github.com/emacsmirror/babel.git
@@ -150,6 +149,7 @@ giturls=(
   git://github.com/sigma/gh.el.git
   git://github.com/sigma/pcache.git
   git://github.com/sigma/logito.git
+  git://github.com/magit/magit.git
   git://github.com/magit/git-modes.git
   git://github.com/lunaryorn/pkg-info.el.git
   git://github.com/magnars/s.el.git
@@ -200,6 +200,7 @@ use_branch_or_tag tramp v-2-2-10
 use_branch_or_tag org-mode release_8.2.10
 use_branch_or_tag smartparens 1.6.3
 use_branch_or_tag evil-nerd-commenter 1.5.12
+use_branch_or_tag git-modes 1.0.0
 
 # ugly
 [ -d queue ] || mkdir queue
