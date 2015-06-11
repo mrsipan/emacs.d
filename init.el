@@ -700,16 +700,17 @@
 
 (require 'magit)
 (global-set-key (kbd "C-c m") 'magit-status)
+(evil-leader/set-key "gs" 'magit-status)
 
 (evil-define-key 'motion magit-mode-map
-  "j" 'magit-goto-next-section
-  "k" 'magit-goto-previous-section)
+  (kbd "j") 'magit-goto-next-section
+  (kbd "k") 'magit-goto-previous-section)
 ;; (evil-define-key 'motion magit-log-mode-map
 ;;   "j" 'magit-goto-next-section
 ;;   "k" 'magit-goto-previous-section)
 (evil-define-key 'motion magit-diff-mode-map
-  (kbd "j") 'magit-goto-next-section
-  (kbd "k") 'magit-goto-previous-section)
+  (kbd "C-j") 'magit-goto-next-section
+  (kbd "C-k") 'magit-goto-previous-section)
 
 ;; rebinding
 ;(global-set-key "\M-?" 'help)
