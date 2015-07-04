@@ -908,3 +908,5 @@
 ;; inf-ruby
 (autoload 'inf-ruby-minor-mode "inf-ruby" "Run inf ruby" t)
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+
+(setq initial-major-mode 'org-mode)
