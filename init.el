@@ -337,6 +337,8 @@
 ;; python hooks
 (add-hook 'python-mode-hook
           #'(lambda ()
+              (smartparens-mode 0)
+              (electric-pair-mode 1)
               (define-key python-mode-map "\C-m" 'newline-and-indent)
               ;; set evil-shift-with to the indent size in python
               (setq evil-shift-width 4)
