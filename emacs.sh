@@ -193,7 +193,7 @@ git branch
 cd ..
 
 use_branch_or_tag python.el emacs-24
-use_branch_or_tag magit 1.2.2
+use_branch_or_tag magit 1.4.2
 use_branch_or_tag evil 1.0.9
 use_branch_or_tag cider v0.8.2
 use_branch_or_tag clojure-mode 4.0.1
