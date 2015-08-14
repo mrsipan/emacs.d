@@ -170,6 +170,7 @@ giturls=(
   git@github.com:syl20bnr/evil-lisp-state.git
   git@github.com:bbatsov/rubocop-emacs.git
   git@github.com:nonsequitur/inf-ruby.git
+  git@github.com:dominikh/go-mode.el.git
 )
 
 # make directories

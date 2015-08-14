@@ -95,6 +95,9 @@
 (add-to-list 'load-path "~/.emacs.d/inf-ruby")
 (add-to-list 'load-path "~/.emacs.d/rubocop-emacs")
 
+; go
+(add-to-list 'load-path "~/.emacs.d/go-mode.el")
+
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -912,3 +915,13 @@
 (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
 
 (setq initial-major-mode 'org-mode)
+
+;; ruby hooks
+(add-hook 'ruby-mode-hook
+          #'(lambda ()
+              (inf-ruby-minor-mode 1)
+              (smartparens-mode 0)
+              (electric-pair-mode 1)
+              (setq evil-shift-width 2)))
+
+(require 'go-mode-autoloads)
