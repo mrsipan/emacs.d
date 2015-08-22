@@ -295,9 +295,11 @@
 (add-to-list 'default-frame-alist
              `(font . ,font-name))
 
-;; Clojure
+;; paredit
 (require 'paredit)
 (require 'evil-paredit)
+
+;; Clojure
 (require 'clojure-mode)
 (require 'clojure-mode-extra-font-locking)
 (add-to-list 'auto-mode-alist '("\\.clj[sx]?$" . clojure-mode))
@@ -415,6 +417,8 @@
               ; (smartparens-mode)
               ; (smartparens-strict-mode)
               ; (evil-smartparents-mode)
+              (paredit-mode)
+              (evil-paredit-mode)
               (rainbow-delimiters-mode)
               ;(turn-on-eldoc-mode)
               (rainbow-mode)))
