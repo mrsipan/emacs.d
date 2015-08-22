@@ -12,7 +12,6 @@
 (add-to-list 'load-path "~/.emacs.d/evil-numbers")
 (add-to-list 'load-path "~/.emacs.d/ace-jump-mode")
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/pytest-emacs")
 (add-to-list 'load-path "~/.emacs.d/pylookup")
 (add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/evil-org-mode")
@@ -23,7 +22,6 @@
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (add-to-list 'load-path "~/.emacs.d/monky")
 (add-to-list 'load-path "~/.emacs.d/haskell-mode")
-(add-to-list 'load-path "~/.emacs.d/android-mode")
 (add-to-list 'load-path "~/.emacs.d/bookmark-plus")
 (add-to-list 'load-path "~/.emacs.d/tramp/lisp")
 (add-to-list 'load-path "~/.emacs.d/ido")
@@ -45,7 +43,6 @@
 (add-to-list 'load-path "~/.emacs.d/smex")
 (add-to-list 'load-path "~/.emacs.d/expand-region")
 (add-to-list 'load-path "~/.emacs.d/browse-kill-ring")
-(add-to-list 'load-path "~/.emacs.d/Pymacs")
 (add-to-list 'load-path "~/.emacs.d/w3m")
 (add-to-list 'load-path "~/.emacs.d/exec-path-from-shell")
 (add-to-list 'load-path "~/.emacs.d/flyspell-lazy")
@@ -79,8 +76,8 @@
 ;; ocaml mode
 (add-to-list 'load-path "~/.emacs.d/tuareg")
 
-(add-to-list 'load-path "~/.emacs.d/smartparens")
-(add-to-list 'load-path "~/.emacs.d/evil-smartparens")
+; (add-to-list 'load-path "~/.emacs.d/smartparens")
+; (add-to-list 'load-path "~/.emacs.d/evil-smartparens")
 
 ;; journal
 (add-to-list 'load-path "~/.emacs.d/org-journal")
@@ -89,7 +86,11 @@
 (add-to-list 'load-path "~/.emacs.d/company-mode")
 
 ;; evil lisp state
-(add-to-list 'load-path "~/.emacs.d/evil-lisp-state")
+; (add-to-list 'load-path "~/.emacs.d/evil-lisp-state")
+;
+;; paredit
+(add-to-list 'load-path "~/.emacs.d/paredit")
+(add-to-list 'load-path "~/.emacs.d/evil-paredit")
 
 ;; ruby
 (add-to-list 'load-path "~/.emacs.d/inf-ruby")
@@ -147,28 +148,29 @@
   "cv" 'evilnc-toggle-invert-comment-line-by-line
   "cc" 'evilnc-comment-operator)
 
-(unless (version< emacs-version "24.4")
-  (require 'evil-smartparens)
-  (smartparens-global-mode t))
+; (unless (version< emacs-version "24.4")
+;   (require 'evil-smartparens)
+;   (require 'smartparens-config)
+;   (smartparens-global-mode nil))
 
 (require 'evil-numbers)
 ;; (define-key evil-normal-state-map (kbd "C-a") 'evil-numbers/inc-at-pt)
 ;; (define-key evil-normal-state-map (kbd "C-x") 'evil-numbers/dec-at-pt)
 
-(setq sp-autoescape-string-quote nil)
-(sp-with-modes sp--lisp-modes
-  ;; disable ', it's the quote character!
-  (sp-local-pair "'" nil :actions nil)
-  ;; also only use the pseudo-quote inside strings where it serve as
-  ;; hyperlink.
-  (sp-local-pair "`" "'" :when '(sp-in-string-p sp-in-comment-p))
-  (sp-local-pair "`" nil
-                 :skip-match (lambda (ms mb me)
-                               (cond
-                                ((equal ms "'")
-                                 (or (sp--org-skip-markup ms mb me)
-                                     (not (sp-point-in-string-or-comment))))
-                                (t (not (sp-point-in-string-or-comment)))))))
+; (setq sp-autoescape-string-quote nil)
+; (sp-with-modes sp--lisp-modes
+;   ;; disable ', it's the quote character!
+;   (sp-local-pair "'" nil :actions nil)
+;   ;; also only use the pseudo-quote inside strings where it serve as
+;   ;; hyperlink.
+;   (sp-local-pair "`" "'" :when '(sp-in-string-p sp-in-comment-p))
+;   (sp-local-pair "`" nil
+;                  :skip-match (lambda (ms mb me)
+;                                (cond
+;                                 ((equal ms "'")
+;                                  (or (sp--org-skip-markup ms mb me)
+;                                      (not (sp-point-in-string-or-comment))))
+;                                 (t (not (sp-point-in-string-or-comment)))))))
 
 (evil-leader/set-key "w" 'evil-write)
 
@@ -294,11 +296,17 @@
              `(font . ,font-name))
 
 ;; Clojure
+(require 'paredit)
+(require 'evil-paredit)
 (require 'clojure-mode)
 (require 'clojure-mode-extra-font-locking)
 (add-to-list 'auto-mode-alist '("\\.clj[sx]?$" . clojure-mode))
 (add-hook 'clojure-mode-hook
           #'(lambda ()
+              ; (smartparens-strict-mode)
+              ; (evil-smartparents-mode)
+              (paredit-mode)
+              (evil-paredit-mode)
               (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
               (clojure-enable-cider)))
@@ -340,7 +348,6 @@
 ;; python hooks
 (add-hook 'python-mode-hook
           #'(lambda ()
-              (smartparens-mode 0)
               (electric-pair-mode 1)
               (define-key python-mode-map "\C-m" 'newline-and-indent)
               ;; set evil-shift-with to the indent size in python
@@ -405,6 +412,9 @@
 (add-hook 'rst-mode-hook 'flyspell-mode)
 (add-hook 'emacs-lisp-mode-hook
           #'(lambda ()
+              ; (smartparens-mode)
+              ; (smartparens-strict-mode)
+              ; (evil-smartparents-mode)
               (rainbow-delimiters-mode)
               ;(turn-on-eldoc-mode)
               (rainbow-mode)))
@@ -706,6 +716,7 @@
 (require 'magit)
 (global-set-key (kbd "C-c m") 'magit-status)
 (evil-leader/set-key "gs" 'magit-status)
+(define-key evil-normal-state-map (kbd "gm") 'magit-status)
 
 (evil-define-key 'motion magit-mode-map
   (kbd "j") 'magit-goto-next-section
@@ -875,8 +886,8 @@
 (evil-define-key 'normal bs-mode-map (kbd "RET") 'bs-select)
 (evil-define-key 'normal bs-mode-map (kbd "q") 'bs-abort)
 
-(setq evil-lisp-state-major-modes '(emacs-lisp-mode clojure-mode))
-(require 'evil-lisp-state)
+; (setq evil-lisp-state-major-modes '(emacs-lisp-mode clojure-mode))
+; (require 'evil-lisp-state)
 
 (require 'rubocop)
 
@@ -920,7 +931,6 @@
 (add-hook 'ruby-mode-hook
           #'(lambda ()
               (inf-ruby-minor-mode 1)
-              (smartparens-mode 0)
               (electric-pair-mode 1)
               (setq evil-shift-width 2)))
 
