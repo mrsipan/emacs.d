@@ -180,9 +180,7 @@
 (define-key evil-normal-state-map (kbd "gR")
   (lambda () (interactive) (evil-edit nil t) (message "File reloaded")))
 
-;(define-key evil-motion-state-map (kbd "SPC") 'evil-scroll-down)
-(evil-leader/set-key "SPC" 'evil-scroll-down)
-(evil-leader/set-key "DEL" 'evil-scroll-up)
+(define-key evil-motion-state-map (kbd "TAB") 'evil-scroll-down)
 (define-key evil-normal-state-map (kbd "DEL") 'evil-scroll-up)
 (define-key evil-motion-state-map (kbd "C-6") 'evil-buffer)
 ;(define-key evil-normal-state-map (kbd ",l") 'pylookup-lookup)
