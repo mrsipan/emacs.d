@@ -81,7 +81,7 @@ giturls=(
   git@github.com:emacsmirror/haskell-mode.git
   git@github.com:emacsmirror/android-mode.git
   git@github.com:emacsmirror/bookmark-plus.git
-  git@git.savannah.gnu.org/tramp.git
+  git://git.savannah.gnu.org/tramp.git
   git@github.com:emacsmirror/cl-lib.git
   git@github.com:emacsmirror/ido.git
   git@github.com:emacsmirror/ido-ubiquitous.git
@@ -129,18 +129,18 @@ giturls=(
   git@github.com:ananthakumaran/monky.git
   git@github.com:hvesalai/scala-mode2.git
   git@github.com:puppetlabs/puppet-syntax-emacs.git
-  git@orgmode.org/org-mode.git
-  git@github.com/redguardtoo/evil-nerd-commenter.git
-  git@github.com/emacsmirror/zenburn-theme.git
-  git@github.com/jwiegley/regex-tool.git
-  git@github.com/emacsmirror/elisp-lint.git
-  git@github.com/emacsmirror/evil-paredit.git
-  git@github.com/emacsmirror/pyregexp.git
-  git@github.com/jwiegley/color-theme.git
-  git@github.com/edwtjo/evil-org-mode.git
-  git@github.com/emacsmirror/google-this.git
-  git@github.com/manzyuk/google-translate.git
-  git@jblevins.org/git/deft.git
+  git://orgmode.org/org-mode.git
+  git@github.com:redguardtoo/evil-nerd-commenter.git
+  git@github.com:emacsmirror/zenburn-theme.git
+  git@github.com:jwiegley/regex-tool.git
+  git@github.com:emacsmirror/elisp-lint.git
+  git@github.com:emacsmirror/evil-paredit.git
+  git@github.com:emacsmirror/pyregexp.git
+  git@github.com:jwiegley/color-theme.git
+  git@github.com:edwtjo/evil-org-mode.git
+  git@github.com:emacsmirror/google-this.git
+  git@github.com:manzyuk/google-translate.git
+  git://jblevins.org/git/deft.git
   git@github.com:magnars/dash.el.git
   git@github.com:defunkt/gist.el.git
   git@github.com:sigma/gh.el.git
@@ -168,6 +168,7 @@ giturls=(
   git@github.com:bbatsov/rubocop-emacs.git
   git@github.com:nonsequitur/inf-ruby.git
   git@github.com:dominikh/go-mode.el.git
+  git@github.com:abo-abo/swiper.git
 )
 
 # make directories

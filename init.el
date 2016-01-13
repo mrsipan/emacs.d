@@ -99,6 +99,9 @@
 ; go
 (add-to-list 'load-path "~/.emacs.d/go-mode.el")
 
+; ivy
+(add-to-list 'load-path "~/.emacs.d/swiper")
+
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
