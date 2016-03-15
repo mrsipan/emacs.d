@@ -511,7 +511,7 @@
 
 ;; web browser
 (require 'w3m-load)
-(setq browse-url-browser-function 'w3m-browse-url)
+; (setq browse-url-browser-function 'w3m-browse-url)
 
 ;; rainbow mode
 (require 'rainbow-mode)
