@@ -940,3 +940,12 @@
               (setq evil-shift-width 2)))
 
 (require 'go-mode-autoloads)
+
+(add-hook 'groovy-mode-hook
+          '(lambda ()
+             (require 'groovy-electric)
+             (groovy-electric-mode)))
+
+;; groovy
+(autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)
+(add-to-list 'auto-mode-alist '("\\.groovy\\'" . groovy-mode))
