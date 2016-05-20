@@ -821,6 +821,7 @@
               (setq tab-width 4)
               ))
 
+;; Ocaml
 (autoload 'tuareg-mode "tuareg" "Mode for editing ocaml" t)
 (autoload 'camldebug "camldebug" "Caml debugger" t)
 (autoload 'tuareg-imenu-set-imenu "tuareg" "config for imenu" t)
@@ -866,7 +867,7 @@
 (define-key company-active-map (kbd "C-p") (lambda () (interactive) (company-complete-common-or-cycle -1)))
 (define-key company-active-map (kbd "C-[") 'company-abort)
 
-;; split window and go to new one
+;; Split window and go to new one
 (define-key evil-window-map "v" '(lambda ()
                                    (interactive)
                                    (progn
