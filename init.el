@@ -859,6 +859,7 @@
 (evil-define-key 'normal dired-mode-map (kbd "n") 'evil-search-next)
 (evil-define-key 'normal dired-mode-map (kbd "N") 'evil-search-previous)
 (evil-define-key 'normal dired-mode-map (kbd "Q") 'kill-this-buffer)
+(evil-define-key 'normal dired-mode-map (kbd "gg") 'evil-goto-first-line)
 
 (define-key evil-insert-state-map (kbd "C-x C-o") 'company-complete)
 (require 'company)
@@ -866,6 +867,7 @@
 (define-key company-active-map (kbd "C-n") (lambda () (interactive) (company-complete-common-or-cycle 1)))
 (define-key company-active-map (kbd "C-p") (lambda () (interactive) (company-complete-common-or-cycle -1)))
 (define-key company-active-map (kbd "C-[") 'company-abort)
+(define-key company-active-map (kbd "C-;") 'company-complete-selection)
 
 ;; Split window and go to new one
 (define-key evil-window-map "v" '(lambda ()
