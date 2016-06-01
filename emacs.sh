@@ -131,6 +131,7 @@ giturls=(
   git@github.com:puppetlabs/puppet-syntax-emacs.git
   git://orgmode.org/org-mode.git
   git@github.com:redguardtoo/evil-nerd-commenter.git
+  git@github.com:redguardtoo/evil-matchit.git
   git@github.com:emacsmirror/zenburn-theme.git
   git@github.com:jwiegley/regex-tool.git
   git@github.com:emacsmirror/elisp-lint.git
@@ -221,4 +222,3 @@ use_branch_or_tag git-modes 1.0.0
 [ -d queue ] || mkdir queue
 [ -f queue/queue.el ] || \
   wget http://www.dr-qubit.org/predictive/queue.el -P queue
-

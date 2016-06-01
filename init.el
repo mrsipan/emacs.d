@@ -54,6 +54,7 @@
 (add-to-list 'load-path "~/.emacs.d/queue")
 (add-to-list 'load-path "~/.emacs.d/cider")
 (add-to-list 'load-path "~/.emacs.d/evil-nerd-commenter")
+(add-to-list 'load-path "~/.emacs.d/evil-matchit")
 (add-to-list 'load-path "~/.emacs.d/find-file-in-project")
 (add-to-list 'load-path "~/.emacs.d/google-translate")
 (add-to-list 'load-path "~/.emacs.d/google-this")
@@ -952,3 +953,7 @@
 ;; groovy
 (autoload 'groovy-mode "groovy-mode" "Major mode for editing Groovy code." t)
 (add-to-list 'auto-mode-alist '("\\.groovy\\'" . groovy-mode))
+
+;; evil matchit
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
