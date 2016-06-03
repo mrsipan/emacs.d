@@ -67,7 +67,7 @@ declare -a giturl
 giturls=(
   git@github.com:emacsmirror/ace-jump-mode.git
   git@github.com:emacsmirror/autopair.git
-  git@github.com:emacsmirror/undo-tree.git
+  http://www.dr-qubit.org/git/undo-tree.git
   git@github.com:clojure-emacs/clojure-mode.git
   git@github.com:clojure-emacs/inf-clojure.git
   git@github.com:emacsmirror/dictionary.git
@@ -148,6 +148,7 @@ giturls=(
   git@github.com:sigma/pcache.git
   git@github.com:sigma/logito.git
   git@github.com:magit/magit.git
+  git@github.com:magit/with-editor.git
   git@github.com:magit/git-modes.git
   git@github.com:lunaryorn/pkg-info.el.git
   git@github.com:magnars/s.el.git
@@ -210,7 +211,7 @@ git branch
 cd ..
 
 use_branch_or_tag python.el emacs-24
-use_branch_or_tag magit 1.4.2
+use_branch_or_tag magit 2.7.0
 use_branch_or_tag cider v0.8.2
 use_branch_or_tag clojure-mode 4.0.1
 use_branch_or_tag tramp v-2-2-10
