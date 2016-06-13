@@ -958,3 +958,6 @@
 ;; evil matchit
 (require 'evil-matchit)
 (global-evil-matchit-mode 1)
+
+;; No footer
+(setq org-export-html-postamble nil)
