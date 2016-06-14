@@ -23,6 +23,8 @@
         evil-surround
         evil-leader
         evil-numbers
+        evil-matchit
+        evil-exchange
         elscreen
         ace-jump-mode
         color-theme-almost-monokai
@@ -943,3 +945,6 @@
 
 ;; No footer
 (setq org-export-html-postamble nil)
+
+;; evil-exchange
+(evil-exchange-install)
