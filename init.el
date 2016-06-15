@@ -1,6 +1,5 @@
 ;; -*- lexical-binding: t -*-
 
-(require 'cl)
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -27,8 +26,6 @@
         evil-exchange
         elscreen
         ace-jump-mode
-        color-theme-almost-monokai
-        monokai-theme
         yasnippet
         pylookup
         rubocop
