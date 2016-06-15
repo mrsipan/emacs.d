@@ -1,0 +1,5 @@
+(:name org-journal
+       :description "org journal"
+       :type github
+       :pkgname "bastibe/org-journal"
+       :mininum-emacs-version 24))
