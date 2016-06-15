@@ -1,0 +1,6 @@
+(:name sipan-theme
+       :description "sipan theme"
+       :type github
+       :pkgname "mrsipan/sipan-theme"
+       :mininum-emacs-version 24
+       :prepare (add-to-list 'custom-theme-load-path default-directory))

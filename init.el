@@ -57,6 +57,7 @@
         ; caml
         markdown-mode
         ; emacs-rust
+        rust-mode
         smex
         expand-region
         browse-kill-ring
@@ -82,6 +83,7 @@
         company-mode
         paredit
         ; evil-paredit
+        sipan-theme
         go-mode))
 
 
@@ -270,7 +272,7 @@
 ;(set-frame-parameter (selected-frame) 'alpha 90)
 
 (if (string-equal "gnu/linux" (symbol-name system-type))
-    (setq font-name "Droid Sans Mono Slashed-12"))
+    (setq font-name "Droid Sans Mono Slashed-11"))
 
 (if (string-equal "darwin" (symbol-name system-type))
     (setq font-name "Droid Sans Mono Slashed-13"))
@@ -608,7 +610,7 @@
 (setq uniquify-ignore-buffers-re "^\\*")
 
 (setq rust-indent-unit 4)
-; (require 'rust-mode)
+(require 'rust-mode)
 
 ;; ibuffer
 (evil-set-initial-state 'ibuffer 'motion)
@@ -819,7 +821,7 @@
 
 ; (add-to-list 'custom-theme-load-path "~/.emacs.d/sipan-theme")
 ; (load-theme 'sipan t)
-(load-theme 'monokai t)
+(load-theme 'sipan t)
 
 (if (boundp 'aquamacs-version)
     (setq aquamacs-scratch-file "~/tmp/aquamacs_scratch"))
