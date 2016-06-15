@@ -28,6 +28,7 @@
         ace-jump-mode
         yasnippet
         pylookup
+        org-journal
         rubocop
         org-mode
         evil-org-mode
