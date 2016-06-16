@@ -21,7 +21,6 @@
 (setq to-install
       '(evil
         clojure-mode
-        ; inf-clojure
         dictionary
         text-translator
         python
@@ -46,32 +45,24 @@
         js2-mode
         monky
         haskell-mode
-        ; bookmark-plus
         tramp
-        ; ido
         ido-ubiquitous
         flx
         dictem
-        ; shell
-        ; cperl-mode
         php-mode
         sass-mode
         yaml-mode
         lua-mode
         ; groovy-mode
         ibuffer-vc
-        ; caml
         markdown-mode
-        ; emacs-rust
         rust-mode
         smex
         expand-region
         browse-kill-ring
-        ; w3m
         exec-path-from-shell
         flyspell-lazy
         wgrep
-        ; lilypond
         gist
         rainbow-delimiters
         scala-mode2
@@ -84,8 +75,6 @@
         ; deft
         vala-mode
         json-mode
-        ; tuareg
-        ; org-journal
         company-mode
         paredit
         ; evil-paredit
@@ -99,11 +88,9 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-;; undo tree
 (require 'undo-tree)
 (global-undo-tree-mode)
 
-; use evil, I love vim
 (setq evil-find-skip-newlines t)
 (setq evil-move-cursor-back t)
 (setq evil-default-cursor '("LightGoldenrod" bar))
@@ -124,8 +111,8 @@
 (setq evil-emacs-state-tag (propertize "E" 'face '((:foreground "#e93c3c"))))
 
 ;; from http://goo.gl/kJ3W9
-;(require 'evil-leader)
-;(require 'evil)
+(require 'evil-leader)
+(require 'evil)
 (setq evil-leader/in-all-states t)
 (evil-leader/set-leader "SPC")
 (evil-mode nil)
@@ -615,8 +602,8 @@
 (setq uniquify-after-kill-buffer-p t)
 (setq uniquify-ignore-buffers-re "^\\*")
 
+;; rust
 (setq rust-indent-unit 4)
-(require 'rust-mode)
 
 ;; ibuffer
 (evil-set-initial-state 'ibuffer 'motion)
@@ -700,36 +687,6 @@
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 
-;; magit
-;(evil-set-initial-state 'magit-status-mode 'motion)
-;(evil-set-initial-state 'magit-diff-mode 'motion)
-;(evil-set-initial-state 'git-commit-mode 'insert)
-
-;(evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
-;(evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)
-;(evil-define-key 'normal magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)
-;(evil-define-key 'normal magit-branch-manager-mode-map (kbd "q") 'magit-mode-quit-window)
-;(evil-define-key 'normal magit-diff-mode-map (kbd "q") 'magit-mode-quit-window)
-
-; (require 'magit)
-;(global-set-key (kbd "C-c m") 'magit-status)
-;(evil-leader/set-key "gs" 'magit-status)
-;(define-key evil-normal-state-map (kbd "gm") 'magit-status)
-
-;(evil-define-key 'motion magit-mode-map
-;  (kbd "j") 'magit-goto-next-section
-;  (kbd "k") 'magit-goto-previous-section)
-;;; (evil-define-key 'motion magit-log-mode-map
-;;;   "j" 'magit-goto-next-section
-;;;   "k" 'magit-goto-previous-section)
-;(evil-define-key 'motion magit-diff-mode-map
-;  (kbd "C-j") 'magit-goto-next-section
-;  (kbd "C-k") 'magit-goto-previous-section)
-
-;; rebinding
-;(global-set-key "\M-?" 'help)
-;(global-set-key "\C-h" 'delete-backward-char)
-
 ;; scroll bar to the right
 (if (display-graphic-p)
   (progn
@@ -794,11 +751,6 @@
 ;; ;; use hunspell
 ;; (unless (boundp 'aquamacs-version)
 ;;     (setq ispell-program-name "hunspell"))
-
-;(setq magit-status-buffer-switch-function 'switch-to-buffer)
-
-; enable github gist
-(require 'gist)
 
 ;; vala
 (autoload 'vala-mode "vala-mode" "Major mode for Vala." t)
