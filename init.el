@@ -1,5 +1,12 @@
 ;; -*- lexical-binding: t -*-
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -24,6 +31,7 @@
         evil-numbers
         evil-matchit
         evil-exchange
+        evil-magit
         elscreen
         ace-jump-mode
         yasnippet
@@ -32,7 +40,7 @@
         rubocop
         org-mode
         evil-org-mode
-        ; magit
+        magit
         ; jinja2
         babel
         js2-mode
@@ -116,8 +124,8 @@
 (setq evil-emacs-state-tag (propertize "E" 'face '((:foreground "#e93c3c"))))
 
 ;; from http://goo.gl/kJ3W9
-(require 'evil-leader)
-(require 'evil)
+;(require 'evil-leader)
+;(require 'evil)
 (setq evil-leader/in-all-states t)
 (evil-leader/set-leader "SPC")
 (evil-mode nil)
@@ -693,30 +701,30 @@
   (winner-mode 1))
 
 ;; magit
-(evil-set-initial-state 'magit-status-mode 'motion)
-(evil-set-initial-state 'magit-diff-mode 'motion)
-(evil-set-initial-state 'git-commit-mode 'insert)
+;(evil-set-initial-state 'magit-status-mode 'motion)
+;(evil-set-initial-state 'magit-diff-mode 'motion)
+;(evil-set-initial-state 'git-commit-mode 'insert)
 
-(evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
-(evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)
-(evil-define-key 'normal magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)
-(evil-define-key 'normal magit-branch-manager-mode-map (kbd "q") 'magit-mode-quit-window)
-(evil-define-key 'normal magit-diff-mode-map (kbd "q") 'magit-mode-quit-window)
+;(evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
+;(evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)
+;(evil-define-key 'normal magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)
+;(evil-define-key 'normal magit-branch-manager-mode-map (kbd "q") 'magit-mode-quit-window)
+;(evil-define-key 'normal magit-diff-mode-map (kbd "q") 'magit-mode-quit-window)
 
 ; (require 'magit)
-(global-set-key (kbd "C-c m") 'magit-status)
-(evil-leader/set-key "gs" 'magit-status)
-(define-key evil-normal-state-map (kbd "gm") 'magit-status)
+;(global-set-key (kbd "C-c m") 'magit-status)
+;(evil-leader/set-key "gs" 'magit-status)
+;(define-key evil-normal-state-map (kbd "gm") 'magit-status)
 
-(evil-define-key 'motion magit-mode-map
-  (kbd "j") 'magit-goto-next-section
-  (kbd "k") 'magit-goto-previous-section)
-;; (evil-define-key 'motion magit-log-mode-map
-;;   "j" 'magit-goto-next-section
-;;   "k" 'magit-goto-previous-section)
-(evil-define-key 'motion magit-diff-mode-map
-  (kbd "C-j") 'magit-goto-next-section
-  (kbd "C-k") 'magit-goto-previous-section)
+;(evil-define-key 'motion magit-mode-map
+;  (kbd "j") 'magit-goto-next-section
+;  (kbd "k") 'magit-goto-previous-section)
+;;; (evil-define-key 'motion magit-log-mode-map
+;;;   "j" 'magit-goto-next-section
+;;;   "k" 'magit-goto-previous-section)
+;(evil-define-key 'motion magit-diff-mode-map
+;  (kbd "C-j") 'magit-goto-next-section
+;  (kbd "C-k") 'magit-goto-previous-section)
 
 ;; rebinding
 ;(global-set-key "\M-?" 'help)
@@ -787,7 +795,7 @@
 ;; (unless (boundp 'aquamacs-version)
 ;;     (setq ispell-program-name "hunspell"))
 
-(setq magit-status-buffer-switch-function 'switch-to-buffer)
+;(setq magit-status-buffer-switch-function 'switch-to-buffer)
 
 ; enable github gist
 (require 'gist)
@@ -948,3 +956,6 @@
 
 ;; evil-exchange
 (evil-exchange-install)
+
+;; magit
+(setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
