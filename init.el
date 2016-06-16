@@ -1,108 +1,99 @@
 ;; -*- lexical-binding: t -*-
-(add-to-list 'load-path "~/.emacs.d/evil")
-(add-to-list 'load-path "~/.emacs.d/clojure-mode")
-(add-to-list 'load-path "~/.emacs.d/inf-clojure")
-(add-to-list 'load-path "~/.emacs.d/dictionary")
-(add-to-list 'load-path "~/.emacs.d/text-translator")
-(add-to-list 'load-path "~/.emacs.d/python.el")
-(add-to-list 'load-path "~/.emacs.d/rainbow-mode")
-(add-to-list 'load-path "~/.emacs.d/undo-tree")
-(add-to-list 'load-path "~/.emacs.d/evil-surround")
-(add-to-list 'load-path "~/.emacs.d/evil-leader")
-(add-to-list 'load-path "~/.emacs.d/evil-numbers")
-(add-to-list 'load-path "~/.emacs.d/ace-jump-mode")
-(add-to-list 'load-path "~/.emacs.d/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/pylookup")
-(add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
-(add-to-list 'load-path "~/.emacs.d/evil-org-mode")
-(add-to-list 'load-path "~/.emacs.d/magit/lisp")
-(add-to-list 'load-path "~/.emacs.d/with-editor")
-(add-to-list 'load-path "~/.emacs.d/apel")
-(add-to-list 'load-path "~/.emacs.d/jinja2")
-(add-to-list 'load-path "~/.emacs.d/babel")
-(add-to-list 'load-path "~/.emacs.d/js2-mode")
-(add-to-list 'load-path "~/.emacs.d/monky")
-(add-to-list 'load-path "~/.emacs.d/haskell-mode")
-(add-to-list 'load-path "~/.emacs.d/bookmark-plus")
-(add-to-list 'load-path "~/.emacs.d/tramp/lisp")
-(add-to-list 'load-path "~/.emacs.d/ido")
-(add-to-list 'load-path "~/.emacs.d/ido-ubiquitous")
-(add-to-list 'load-path "~/.emacs.d/flx")
-(add-to-list 'load-path "~/.emacs.d/dictem")
-(add-to-list 'load-path "~/.emacs.d/shell")
-(add-to-list 'load-path "~/.emacs.d/puppet-syntax-emacs")
-(add-to-list 'load-path "~/.emacs.d/cperl-mode")
-(add-to-list 'load-path "~/.emacs.d/php-mode")
-(add-to-list 'load-path "~/.emacs.d/sass-mode")
-(add-to-list 'load-path "~/.emacs.d/yaml-mode")
-(add-to-list 'load-path "~/.emacs.d/lua-mode")
-(add-to-list 'load-path "~/.emacs.d/groovy-mode")
-(add-to-list 'load-path "~/.emacs.d/ibuffer-vc")
-(add-to-list 'load-path "~/.emacs.d/caml")
-(add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(add-to-list 'load-path "~/.emacs.d/emacs-rust")
-(add-to-list 'load-path "~/.emacs.d/smex")
-(add-to-list 'load-path "~/.emacs.d/expand-region")
-(add-to-list 'load-path "~/.emacs.d/browse-kill-ring")
-(add-to-list 'load-path "~/.emacs.d/w3m")
-(add-to-list 'load-path "~/.emacs.d/exec-path-from-shell")
-(add-to-list 'load-path "~/.emacs.d/flyspell-lazy")
-(add-to-list 'load-path "~/.emacs.d/wgrep")
-(add-to-list 'load-path "~/.emacs.d/lilypond")
-(add-to-list 'load-path "~/.emacs.d/gist")
-(add-to-list 'load-path "~/.emacs.d/rainbow-delimiters")
-(add-to-list 'load-path "~/.emacs.d/scala-mode2")
-(add-to-list 'load-path "~/.emacs.d/queue")
-(add-to-list 'load-path "~/.emacs.d/cider")
-(add-to-list 'load-path "~/.emacs.d/evil-nerd-commenter")
-(add-to-list 'load-path "~/.emacs.d/evil-matchit")
-(add-to-list 'load-path "~/.emacs.d/find-file-in-project")
-(add-to-list 'load-path "~/.emacs.d/google-translate")
-(add-to-list 'load-path "~/.emacs.d/google-this")
-(add-to-list 'load-path "~/.emacs.d/dash.el")
-(add-to-list 'load-path "~/.emacs.d/deft")
-(add-to-list 'load-path "~/.emacs.d/gist.el")
-; (add-to-list 'load-path "~/.emacs.d/git-modes")
-(add-to-list 'load-path "~/.emacs.d/pkg-info.el")
-(add-to-list 'load-path "~/.emacs.d/s.el")
-(add-to-list 'load-path "~/.emacs.d/vala-mode")
-(add-to-list 'load-path "~/.emacs.d/epl")
-(add-to-list 'load-path "~/.emacs.d/json-mode")
-(add-to-list 'load-path "~/.emacs.d/json-reformat")
-(add-to-list 'load-path "~/.emacs.d/json-snatcher")
-;; gist dependencies
-(add-to-list 'load-path "~/.emacs.d/gh.el")
-(add-to-list 'load-path "~/.emacs.d/pcache")
-(add-to-list 'load-path "~/.emacs.d/logito")
 
-;; ocaml mode
-(add-to-list 'load-path "~/.emacs.d/tuareg")
 
-; (add-to-list 'load-path "~/.emacs.d/smartparens")
-; (add-to-list 'load-path "~/.emacs.d/evil-smartparens")
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
 
-;; journal
-(add-to-list 'load-path "~/.emacs.d/org-journal")
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-;; company-mode
-(add-to-list 'load-path "~/.emacs.d/company-mode")
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
 
-;; evil lisp state
-; (add-to-list 'load-path "~/.emacs.d/evil-lisp-state")
-;
-;; paredit
-(add-to-list 'load-path "~/.emacs.d/paredit")
-(add-to-list 'load-path "~/.emacs.d/evil-paredit")
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user-recipes")
 
-;; ruby
-(add-to-list 'load-path "~/.emacs.d/inf-ruby")
-(add-to-list 'load-path "~/.emacs.d/rubocop-emacs")
+(setq to-install
+      '(evil
+        clojure-mode
+        ; inf-clojure
+        dictionary
+        text-translator
+        python
+        rainbow-mode
+        evil-surround
+        evil-leader
+        evil-numbers
+        evil-matchit
+        evil-exchange
+        evil-magit
+        elscreen
+        ace-jump-mode
+        yasnippet
+        pylookup
+        org-journal
+        rubocop
+        org-mode
+        evil-org-mode
+        magit
+        ; jinja2
+        babel
+        js2-mode
+        monky
+        haskell-mode
+        ; bookmark-plus
+        tramp
+        ; ido
+        ido-ubiquitous
+        flx
+        dictem
+        ; shell
+        ; cperl-mode
+        php-mode
+        sass-mode
+        yaml-mode
+        lua-mode
+        ; groovy-mode
+        ibuffer-vc
+        ; caml
+        markdown-mode
+        ; emacs-rust
+        rust-mode
+        smex
+        expand-region
+        browse-kill-ring
+        ; w3m
+        exec-path-from-shell
+        flyspell-lazy
+        wgrep
+        ; lilypond
+        gist
+        rainbow-delimiters
+        scala-mode2
+        cider
+        evil-nerd-commenter
+        find-file-in-project
+        google-translate
+        google-this
+        dash
+        ; deft
+        vala-mode
+        json-mode
+        ; tuareg
+        ; org-journal
+        company-mode
+        paredit
+        ; evil-paredit
+        sipan-theme
+        go-mode))
 
-; go
-(add-to-list 'load-path "~/.emacs.d/go-mode.el")
 
-; ivy
-(add-to-list 'load-path "~/.emacs.d/swiper")
+(el-get 'sync to-install)
 
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
@@ -133,8 +124,8 @@
 (setq evil-emacs-state-tag (propertize "E" 'face '((:foreground "#e93c3c"))))
 
 ;; from http://goo.gl/kJ3W9
-(require 'evil-leader)
-(require 'evil)
+;(require 'evil-leader)
+;(require 'evil)
 (setq evil-leader/in-all-states t)
 (evil-leader/set-leader "SPC")
 (evil-mode nil)
@@ -287,7 +278,7 @@
 ;(set-frame-parameter (selected-frame) 'alpha 90)
 
 (if (string-equal "gnu/linux" (symbol-name system-type))
-    (setq font-name "Droid Sans Mono Slashed-12"))
+    (setq font-name "Droid Sans Mono Slashed-11"))
 
 (if (string-equal "darwin" (symbol-name system-type))
     (setq font-name "Droid Sans Mono Slashed-13"))
@@ -300,7 +291,7 @@
 
 ;; paredit
 (require 'paredit)
-(require 'evil-paredit)
+; (require 'evil-paredit)
 
 ;; Clojure
 (require 'clojure-mode)
@@ -311,7 +302,7 @@
               ; (smartparens-strict-mode)
               ; (evil-smartparents-mode)
               (paredit-mode)
-              (evil-paredit-mode)
+              ; (evil-paredit-mode)
               (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
               (clojure-enable-cider)))
@@ -421,7 +412,7 @@
               ; (smartparens-strict-mode)
               ; (evil-smartparents-mode)
               (paredit-mode)
-              (evil-paredit-mode)
+              ; (evil-paredit-mode)
               (rainbow-delimiters-mode)
               ;(turn-on-eldoc-mode)
               (rainbow-mode)))
@@ -512,7 +503,7 @@
 (autoload 'pylookup-update "pylookup" t)
 
 ;; web browser
-(require 'w3m-load)
+; (require 'w3m-load)
 ; (setq browse-url-browser-function 'w3m-browse-url)
 
 ;; rainbow mode
@@ -710,30 +701,30 @@
   (winner-mode 1))
 
 ;; magit
-(evil-set-initial-state 'magit-status-mode 'motion)
-(evil-set-initial-state 'magit-diff-mode 'motion)
-(evil-set-initial-state 'git-commit-mode 'insert)
+;(evil-set-initial-state 'magit-status-mode 'motion)
+;(evil-set-initial-state 'magit-diff-mode 'motion)
+;(evil-set-initial-state 'git-commit-mode 'insert)
 
-(evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
-(evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)
-(evil-define-key 'normal magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)
-(evil-define-key 'normal magit-branch-manager-mode-map (kbd "q") 'magit-mode-quit-window)
-(evil-define-key 'normal magit-diff-mode-map (kbd "q") 'magit-mode-quit-window)
+;(evil-define-key 'motion magit-status-mode-map (kbd "b") 'magit-key-mode-popup-branching)
+;(evil-define-key 'motion magit-status-mode-map (kbd "F") 'magit-key-mode-popup-pulling)
+;(evil-define-key 'normal magit-branch-manager-mode-map (kbd "RET") 'magit-visit-item)
+;(evil-define-key 'normal magit-branch-manager-mode-map (kbd "q") 'magit-mode-quit-window)
+;(evil-define-key 'normal magit-diff-mode-map (kbd "q") 'magit-mode-quit-window)
 
-(require 'magit)
-(global-set-key (kbd "C-c m") 'magit-status)
-(evil-leader/set-key "gs" 'magit-status)
-(define-key evil-normal-state-map (kbd "gm") 'magit-status)
+; (require 'magit)
+;(global-set-key (kbd "C-c m") 'magit-status)
+;(evil-leader/set-key "gs" 'magit-status)
+;(define-key evil-normal-state-map (kbd "gm") 'magit-status)
 
-(evil-define-key 'motion magit-mode-map
-  (kbd "j") 'magit-goto-next-section
-  (kbd "k") 'magit-goto-previous-section)
-;; (evil-define-key 'motion magit-log-mode-map
-;;   "j" 'magit-goto-next-section
-;;   "k" 'magit-goto-previous-section)
-(evil-define-key 'motion magit-diff-mode-map
-  (kbd "C-j") 'magit-goto-next-section
-  (kbd "C-k") 'magit-goto-previous-section)
+;(evil-define-key 'motion magit-mode-map
+;  (kbd "j") 'magit-goto-next-section
+;  (kbd "k") 'magit-goto-previous-section)
+;;; (evil-define-key 'motion magit-log-mode-map
+;;;   "j" 'magit-goto-next-section
+;;;   "k" 'magit-goto-previous-section)
+;(evil-define-key 'motion magit-diff-mode-map
+;  (kbd "C-j") 'magit-goto-next-section
+;  (kbd "C-k") 'magit-goto-previous-section)
 
 ;; rebinding
 ;(global-set-key "\M-?" 'help)
@@ -793,18 +784,18 @@
 
 
 ;; deft
-(require 'deft)
-(setq deft-extension "org")
-(setq deft-directory "~/Dropbox/deft")
-(setq deft-text-mode 'org-mode)
+; (require 'deft)
+; (setq deft-extension "org")
+; (setq deft-directory "~/Dropbox/deft")
+; (setq deft-text-mode 'org-mode)
 ;(setq deft-use-filename-as-title t)
-(global-set-key [f7] 'deft)
+; (global-set-key [f7] 'deft)
 
 ;; ;; use hunspell
 ;; (unless (boundp 'aquamacs-version)
 ;;     (setq ispell-program-name "hunspell"))
 
-(setq magit-status-buffer-switch-function 'switch-to-buffer)
+;(setq magit-status-buffer-switch-function 'switch-to-buffer)
 
 ; enable github gist
 (require 'gist)
@@ -834,7 +825,8 @@
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/sipan-theme")
+; (add-to-list 'custom-theme-load-path "~/.emacs.d/sipan-theme")
+; (load-theme 'sipan t)
 (load-theme 'sipan t)
 
 (if (boundp 'aquamacs-version)
@@ -855,7 +847,7 @@
 (setq org-crypt-key nil)
 
 (setq org-journal-dir "~/Dropbox/journal/")
-(require 'org-journal)
+; (require 'org-journal)
 
 ; dired
 (evil-define-key 'normal dired-mode-map (kbd "n") 'evil-search-next)
@@ -961,3 +953,9 @@
 
 ;; No footer
 (setq org-export-html-postamble nil)
+
+;; evil-exchange
+(evil-exchange-install)
+
+;; magit
+(setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
