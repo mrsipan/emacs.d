@@ -111,15 +111,12 @@
 (setq evil-emacs-state-tag (propertize "E" 'face '((:foreground "#e93c3c"))))
 
 ;; from http://goo.gl/kJ3W9
-(require 'evil-leader)
-(require 'evil)
 (setq evil-leader/in-all-states t)
 (evil-leader/set-leader "SPC")
 (evil-mode nil)
 (global-evil-leader-mode 1)
 (evil-mode 1)
 
-;; like in vim-commentary
 (setq evilnc-hotkey-comment-operator "gc")
 (require 'evil-nerd-commenter)
 (evil-leader/set-key
@@ -130,6 +127,12 @@
   "cr" 'comment-or-uncomment-region
   "cv" 'evilnc-toggle-invert-comment-line-by-line
   "cc" 'evilnc-comment-operator)
+
+;; like in vim-commentary
+(eval-after-load 'evil-nerd-commenter-operator
+  '(progn
+     (define-key evil-normal-state-map "gc" 'evilnc-comment-operator)
+     (define-key evil-visual-state-map "gc" 'evilnc-comment-operator)))
 
 ; (unless (version< emacs-version "24.4")
 ;   (require 'evil-smartparens)
