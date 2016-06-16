@@ -1,0 +1,5 @@
+(:name evil-magit
+       :description "evil-magit"
+       :type github
+       :pkgname "justbur/evil-magit"
+       :mininum-emacs-version 24))
