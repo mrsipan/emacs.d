@@ -127,6 +127,10 @@
      (define-key evil-normal-state-map "gc" 'evilnc-comment-operator)
      (define-key evil-visual-state-map "gc" 'evilnc-comment-operator)))
 
+(evil-define-key 'normal yaml-mode-map [backspace] 'evil-scroll-up)
+(evil-define-key 'motion yaml-mode-map [backspace] 'evil-scroll-up)
+(evil-define-key 'insert yaml-mode-map [backspace] 'yaml-electric-backspace)
+
 ; (unless (version< emacs-version "24.4")
 ;   (require 'evil-smartparens)
 ;   (require 'smartparens-config)
