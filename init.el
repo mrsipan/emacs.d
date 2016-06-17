@@ -55,6 +55,7 @@
         browse-kill-ring
         exec-path-from-shell
         flyspell-lazy
+        web-mode
         wgrep
         gist
         rainbow-delimiters
