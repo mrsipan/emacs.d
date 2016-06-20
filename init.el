@@ -12,68 +12,69 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user-recipes")
 
 (setq to-install
-      '(evil
-        clojure-mode
-        dictionary
-        text-translator
-        python
-        rainbow-mode
-        evil-surround
-        evil-leader
-        evil-numbers
-        evil-matchit
-        evil-exchange
-        evil-magit
-        elscreen
-        ace-jump-mode
-        yasnippet
-        pylookup
-        org-journal
-        rubocop
-        org-mode
-        evil-org-mode
-        magit
+      '(ace-jump-mode
+        ; deft
+        ; evil-paredit
+        ; groovy-mode
         ; jinja2
         babel
-        js2-mode
-        monky
-        haskell-mode
-        tramp
-        ido-ubiquitous
-        flx
-        dictem
-        php-mode
-        sass-mode
-        yaml-mode
-        lua-mode
-        ; groovy-mode
-        ibuffer-vc
-        markdown-mode
-        rust-mode
-        smex
-        expand-region
         browse-kill-ring
+        cider
+        clojure-mode
+        company-mode
+        dash
+        dictem
+        dictionary
+        elscreen
+        evil
+        evil-exchange
+        evil-leader
+        evil-magit
+        evil-matchit
+        evil-nerd-commenter
+        evil-numbers
+        evil-org-mode
+        evil-surround
         exec-path-from-shell
+        expand-region
+        find-file-in-project
+        flx
         flyspell-lazy
+        gist
+        go-mode
+        google-this
+        google-translate
+        haskell-mode
+        ibuffer-vc
+        ido-ubiquitous
+        js2-mode
+        json-mode
+        lua-mode
+        lispy
+        magit
+        markdown-mode
+        monky
+        org-journal
+        org-mode
+        paredit
+        php-mode
+        pylookup
+        python
+        rainbow-delimiters
+        rainbow-mode
+        rubocop
+        rust-mode
+        sass-mode
+        scala-mode2
+        sipan-theme
+        smex
+        text-translator
+        tramp
+        vala-mode
         web-mode
         wgrep
-        gist
-        rainbow-delimiters
-        scala-mode2
-        cider
-        evil-nerd-commenter
-        find-file-in-project
-        google-translate
-        google-this
-        dash
-        ; deft
-        vala-mode
-        json-mode
-        company-mode
-        paredit
-        ; evil-paredit
-        sipan-theme
-        go-mode))
+        yaml-mode
+        yasnippet))
 
 
 (el-get 'sync to-install)
@@ -131,6 +132,8 @@
 (evil-define-key 'normal yaml-mode-map [backspace] 'evil-scroll-up)
 (evil-define-key 'motion yaml-mode-map [backspace] 'evil-scroll-up)
 (evil-define-key 'insert yaml-mode-map [backspace] 'yaml-electric-backspace)
+
+(evil-define-key 'normal shell-mode-map (kbd "<C-return>") 'find-file-at-point)
 
 ; (unless (version< emacs-version "24.4")
 ;   (require 'evil-smartparens)
