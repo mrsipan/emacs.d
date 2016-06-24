@@ -12,21 +12,24 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user-recipes")
 
 (setq to-install
-      '(ace-jump-mode
+      '(; ace-jump-mode
         ; deft
         ; evil-paredit
         ; groovy-mode
         ; jinja2
+        auto-yasnippet
+        avy
         babel
         browse-kill-ring
         cider
         clojure-mode
         company-mode
-        dash
         dictem
         dictionary
         elscreen
+        ensime
         evil
+        ; evil-cleverparens
         evil-exchange
         evil-leader
         evil-magit
@@ -47,6 +50,7 @@
         haskell-mode
         ibuffer-vc
         ido-ubiquitous
+        inf-ruby
         js2-mode
         json-mode
         lua-mode
@@ -56,7 +60,6 @@
         monky
         org-journal
         org-mode
-        paredit
         php-mode
         pylookup
         python
@@ -65,8 +68,10 @@
         rubocop
         rust-mode
         sass-mode
-        scala-mode2
+        scala-mode
+        swiper
         sipan-theme
+        smartparens
         smex
         text-translator
         tramp
@@ -195,9 +200,9 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
-;; Ace jump
-(require 'ace-jump-mode)
-(evil-leader/set-key "j" 'ace-jump-mode)
+; ;; Ace jump
+; (require 'ace-jump-mode)
+; (evil-leader/set-key "j" 'ace-jump-mode)
 
 ;; Set size for paragraphs
 (setq-default fill-column 72)
@@ -280,9 +285,9 @@
 (add-to-list 'default-frame-alist
              `(font . ,font-name))
 
-;; paredit
-(require 'paredit)
-; (require 'evil-paredit)
+; ;; paredit
+; (require 'paredit)
+; ; (require 'evil-paredit)
 
 ;; Clojure
 (require 'clojure-mode)
@@ -292,7 +297,7 @@
           #'(lambda ()
               ; (smartparens-strict-mode)
               ; (evil-smartparents-mode)
-              (paredit-mode)
+              ; (paredit-mode)
               ; (evil-paredit-mode)
               (rainbow-delimiters-mode)
               (define-key clojure-mode-map "\C-m" 'newline-and-indent)
@@ -708,7 +713,7 @@
 
 (require 'rainbow-delimiters)
 
-(require 'scala-mode2)
+; (require 'scala-mode2)
 (add-hook 'scala-mode-hook
           #'(lambda ()
               ;(flyspell-prog-mode)
@@ -917,3 +922,7 @@
 (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 
 (evil-leader/set-key "gs" 'magit-status)
+
+;; compilation
+(evil-leader/set-key "cn" 'next-error)
+(evil-leader/set-key "cp" 'previous-error)
