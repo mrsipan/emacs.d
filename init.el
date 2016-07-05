@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
+(package-initialize)
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -82,7 +84,7 @@
         yasnippet))
 
 
-(el-get 'sync to-install)
+(el-get 'sync)
 
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
@@ -791,7 +793,10 @@
 (load-theme 'sipan t)
 
 (if (boundp 'aquamacs-version)
-    (setq aquamacs-scratch-file "~/tmp/aquamacs_scratch"))
+    (progn
+      (setq aquamacs-scratch-file "~/tmp/aquamacs_scratch")
+      (add-to-list 'el-get-recipe-path
+                   "~/Library/Preferences/Aquamacs Emacs/Packages/el-get/el-get/recipes")))
 
 (setq epa-file-cache-passphrase-for-symmetric-encryption t)
 ;(setq epa-file-encrypt-to "")
