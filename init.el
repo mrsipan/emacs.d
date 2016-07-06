@@ -488,7 +488,9 @@
 (require 'yasnippet)
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "C-x C-y") 'yas-expand)
+;(define-key yas-minor-mode-map (kbd "C-x C-y") 'yas-expand)
+;(define-key yas-minor-mode-map (kbd "C-x C-y") 'company-yasnippet)
+(define-key yas-minor-mode-map (kbd "C-x C-y") 'yas-insert-snippet)
 (yas/global-mode 1)
 (setq yas/prompt-functions '(yas/ido-prompt yas/dropdown-prompt))
 (yas/initialize)
@@ -931,3 +933,8 @@
 ;; compilation
 (evil-leader/set-key "cn" 'next-error)
 (evil-leader/set-key "cp" 'previous-error)
+
+(eval-after-load 'yasnippet
+  '(progn
+     (define-key yas-keymap (kbd "C-<return>") 'yas-prev-field)
+     (define-key yas-keymap (kbd "<return>") 'yas-next-field-or-maybe-expand)))

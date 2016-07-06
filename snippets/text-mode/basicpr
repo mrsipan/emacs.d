@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: basicpr
+# key: basicpr
+# --
+
+*Jira Ticket*: [${1:ticket_name}](https://jira.rallyhealth.com/browse/$1)
+
+cc: $0
