@@ -481,6 +481,8 @@
               (local-unset-key [(control ?,)])
               (org-defkey org-mode-map "\C-c[" 'undefined)
               (org-defkey org-mode-map "\C-c]" 'undefined)
+              (org-defkey org-mode-map "\C-i" nil)
+              (org-defkey org-mode-map [(tab)] nil)
               (org-defkey org-mode-map "\C-c;" 'undefined))
           'append)
 
@@ -491,6 +493,13 @@
 ;(define-key yas-minor-mode-map (kbd "C-x C-y") 'yas-expand)
 ;(define-key yas-minor-mode-map (kbd "C-x C-y") 'company-yasnippet)
 (define-key yas-minor-mode-map (kbd "C-x C-y") 'yas-insert-snippet)
+(define-key yas-minor-mode-map (kbd "C-x C-y")
+  '(lambda ()
+     (interactive)
+     (if (string= evil-state "normal")
+         (evil-insert-state))
+     (yas-insert-snippet)))
+
 (yas/global-mode 1)
 (setq yas/prompt-functions '(yas/ido-prompt yas/dropdown-prompt))
 (yas/initialize)
@@ -938,3 +947,7 @@
   '(progn
      (define-key yas-keymap (kbd "C-<return>") 'yas-prev-field)
      (define-key yas-keymap (kbd "<return>") 'yas-next-field-or-maybe-expand)))
+
+;; org-mode
+(evil-leader/set-key-for-mode 'org-mode "e" 'org-cycle)
+;; (evil-define-key 'normal org-mode-map (kbd "TAB") 'evil-scroll-down)
