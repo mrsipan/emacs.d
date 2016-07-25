@@ -951,3 +951,6 @@
 ;; org-mode
 (evil-leader/set-key-for-mode 'org-mode "e" 'org-cycle)
 ;; (evil-define-key 'normal org-mode-map (kbd "TAB") 'evil-scroll-down)
+
+;; write unicode
+(setq read-quoted-char-radix 16)
