@@ -1,0 +1,4 @@
+(:name memoize
+       :description "emacs memoize"
+       :type github
+       :pkgname "skeeto/emacs-memoize")

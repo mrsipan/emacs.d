@@ -11,6 +11,10 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
+(require 'el-get-elpa)
+(unless (file-directory-p el-get-recipe-path-elpa)
+  (el-get-elpa-build-local-recipes))
+
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user-recipes")
 
 (setq to-install
@@ -51,7 +55,7 @@
         google-translate
         haskell-mode
         ibuffer-vc
-        ido-ubiquitous
+        ido-completing-read+
         inf-ruby
         js2-mode
         json-mode
@@ -77,14 +81,14 @@
         smex
         text-translator
         tramp
+        memoize
         vala-mode
         web-mode
         wgrep
         yaml-mode
         yasnippet))
 
-
-(el-get 'sync)
+(el-get 'sync to-install)
 
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
