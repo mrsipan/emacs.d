@@ -1,19 +1,15 @@
 ;; -*- lexical-binding: t -*-
 
-(package-initialize)
-
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
-
-(require 'el-get-elpa)
-(unless (file-directory-p el-get-recipe-path-elpa)
-  (el-get-elpa-build-local-recipes))
+  (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" "http://melpa.org/packages/"))
+  (package-refresh-contents)
+  (package-initialize)
+  (package-install 'el-get)
+  (require 'el-get))
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user-recipes")
 
@@ -21,8 +17,9 @@
       '(; ace-jump-mode
         ; deft
         ; evil-paredit
+        lispyville
         ; groovy-mode
-        ; jinja2
+        jinja2-mode
         auto-yasnippet
         avy
         babel
@@ -35,7 +32,6 @@
         elscreen
         ensime
         evil
-        ; evil-cleverparens
         evil-exchange
         evil-leader
         evil-magit
@@ -88,7 +84,8 @@
         yaml-mode
         yasnippet))
 
-(el-get 'sync to-install)
+(mapc (lambda (package-name) (eval `(el-get-bundle ,package-name))) to-install)
+(el-get 'sync)
 
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
