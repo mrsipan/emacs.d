@@ -1,0 +1,4 @@
+(:name memoize
+       :description "Ido completing read plus"
+       :type github
+       :pkgname "DarwinAwardWinner/ido-completing-read-plus")

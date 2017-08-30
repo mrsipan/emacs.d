@@ -3,13 +3,11 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" "http://melpa.org/packages/"))
-  (package-refresh-contents)
-  (package-initialize)
-  (package-install 'el-get)
-  (require 'el-get))
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user-recipes")
 
@@ -17,8 +15,8 @@
       '(; ace-jump-mode
         ; deft
         ; evil-paredit
-        lispyville
-        ; groovy-mode
+        ; lispyville
+        groovy-emacs-mode
         jinja2-mode
         auto-yasnippet
         avy
@@ -84,7 +82,10 @@
         yaml-mode
         yasnippet))
 
-(mapc (lambda (package-name) (eval `(el-get-bundle ,package-name))) to-install)
+(mapc (lambda (package-name)
+        (eval `(el-get-bundle ,package-name)))
+      to-install)
+
 (el-get 'sync)
 
 (require 'exec-path-from-shell)
@@ -365,7 +366,6 @@
 
 ;; ido stuff
 (require 'ido)
-(require 'ido-ubiquitous)
 (require 'flx-ido)
 
 (setq ido-enable-flex-matching t)
@@ -378,7 +378,6 @@
 (setq ido-use-virtual-buffers t)
 (setq ido-save-directory-list-files "~/.emacs.d/ido-last")
 (ido-mode t)
-(ido-ubiquitous-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
 
