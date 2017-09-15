@@ -954,3 +954,5 @@
 
 ;; write unicode
 (setq read-quoted-char-radix 16)
+
+(require 'evil-magit)
