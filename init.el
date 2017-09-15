@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
+;; (package-initialize)
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -15,7 +17,7 @@
       '(; ace-jump-mode
         ; deft
         ; evil-paredit
-        ; lispyville
+        lispyville
         groovy-emacs-mode
         jinja2-mode
         auto-yasnippet
