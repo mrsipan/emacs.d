@@ -296,7 +296,7 @@
 ;; Clojure
 (require 'clojure-mode)
 (require 'clojure-mode-extra-font-locking)
-(add-to-list 'auto-mode-alist '("\\.clj[sx]?$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.clj[sxc]?$" . clojure-mode))
 (add-hook 'clojure-mode-hook
           #'(lambda ()
               ; (smartparens-strict-mode)
