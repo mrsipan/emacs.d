@@ -811,22 +811,20 @@
       (add-to-list 'el-get-recipe-path
                    "~/Library/Preferences/Aquamacs Emacs/Packages/el-get/el-get/recipes")))
 
-(setq epa-file-cache-passphrase-for-symmetric-encryption t)
-;(setq epa-file-encrypt-to "")
-(setq epa-file-select-keys t)
+(setq epa-file-select-keys "2F267E644C611230")
 (setq epa-file-name-regexp "\\.\\(gpg\\|asc\\)$" epa-armor t)
 (setq epa-file-inhibit-auto-save t)
+(setq epg-gpg-program "gpg2")
 (require 'epa-file)
 (epa-file-name-regexp-update)
 
 (require 'org-crypt)
 (org-crypt-use-before-save-magic)
 (setq org-tags-exclude-from-inheritance '("crypt"))
-;(setq org-crypt-key "")
-(setq org-crypt-key nil)
+(setq org-crypt-key "2F267E644C611230")
 
 (setq org-journal-dir "~/Dropbox/journal/")
-; (require 'org-journal)
+;; (require 'org-journal)
 
 ; dired
 (evil-define-key 'normal dired-mode-map (kbd "n") 'evil-search-next)
