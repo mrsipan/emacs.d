@@ -956,3 +956,6 @@
 (setq read-quoted-char-radix 16)
 
 (require 'evil-magit)
+
+;; disable helm
+(helm-mode 0)
