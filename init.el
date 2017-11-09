@@ -76,7 +76,7 @@
         smartparens
         smex
         text-translator
-        tramp
+        ;; tramp
         memoize
         vala-mode
         web-mode
@@ -224,7 +224,7 @@
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;; Line wrapping
-(setq default-truncate-lines t)
+(setq default-truncate-lines nil)
 
 ;; use auto fill for text
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -913,7 +913,12 @@
               (electric-pair-mode 1)
               (setq evil-shift-width 2)))
 
-(require 'go-mode-autoloads)
+(add-to-list 'auto-mode-alist
+             '("\\.\\(?:cap\\|gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|ru\\|thor\\)\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist
+             '("\\(?:Brewfile\\|Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'" . ruby-mode))
+
+;; (require 'go-mode-autoloads)
 
 (add-hook 'groovy-mode-hook
           '(lambda ()
